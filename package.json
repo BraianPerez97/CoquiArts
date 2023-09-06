@@ -1,0 +1,29 @@
+{
+  "name": "CoquiArts",
+  "version": "1.0.0",
+  "description": "For any questions about this repo, please contact us * [Nashalys Fernandez Rivera](mailto:nashalysf@gmail.com) * [Jose Alvarez Gutierrez](mailto:josealejandro220@gmail.com) * [Braian Perez Cruz](mailto:bsj2025@hotmail.com) * [Guillermo Rosario](mailto:guillermorosario628@gmail.com)",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.32.1"
+  },
+  "devDependencies": {
+    "jest": "^29.6.4"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BraianPerez97/CoquiArts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BraianPerez97/CoquiArts/issues"
+  },
+  "homepage": "https://github.com/BraianPerez97/CoquiArts#readme"
+}
