@@ -39,20 +39,24 @@ app.get('/api/user', (req, res) => {
         });
     });
 });
-/*
+
 // get a single candidate
 app.get('/api/user/:id', (req, res) => {
     const db_call = `SELECT * FROM user WHERE id=?`;
     const params = [req.params.id];
 
-    db_query
-})
-    db.query('SELECT * FROM user WHERE id=1', (err, row) => {
+    db.query(db_call, params, (err, row) => {
         if (err) {
-            console.log(err);
+            res.status(400).json({ error: err.message});
+            return;
         }
-        console.log(row);
-    }); */
+        res.json({
+            message: 'success',
+            data: rows
+        });
+    });
+});
+    
 
 // Delete User
 db.query(`DELETE * FROM users WHERE id=1`, (err, result) => {
