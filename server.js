@@ -23,11 +23,27 @@ var db = mysql.createConnection(
 
 // Routes
 // index
-app.get('/', (req, res) => {
-    res.json({
-        message: 'Hello! Im working! YEY!'
-    });
+// Delete User
+db.query(`DELETE * FROM users WHERE id=1`, (err, result) => {
+    if (err) {
+        console.log(err)
+    }
+    console.log(result)
 });
+// Create User
+app.get("/api/user", (req, res) => {
+    const db_call = `INSERT INTO user (first_name, last_name, email, password) VALUES (?,?,?,?)`;
+
+    const params =["Braian", "Perez", 'bapc@gmail.com', '123456789'];
+
+    db.query(db_call, params, (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log(result);
+    });
+
+})
 // Error handling
 app.use((req, res) => {
     res.status(404).end();
