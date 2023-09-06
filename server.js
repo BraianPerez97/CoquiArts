@@ -22,7 +22,38 @@ var db = mysql.createConnection(
 )
 
 // Routes
-// index
+
+// return all users
+app.get('/api/user', (req, res) => {
+    
+    const db_call = `SELECT * FROM user`;
+
+    db.query(db_call, (err, rows) => {
+        if (err) {
+            res.status(500).json({error: err.message});
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
+    });
+});
+/*
+// get a single candidate
+app.get('/api/user/:id', (req, res) => {
+    const db_call = `SELECT * FROM user WHERE id=?`;
+    const params = [req.params.id];
+
+    db_query
+})
+    db.query('SELECT * FROM user WHERE id=1', (err, row) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log(row);
+    }); */
+
 // Delete User
 db.query(`DELETE * FROM users WHERE id=1`, (err, result) => {
     if (err) {
@@ -44,6 +75,7 @@ app.get("/api/user", (req, res) => {
     });
 
 })
+
 // Error handling
 app.use((req, res) => {
     res.status(404).end();
