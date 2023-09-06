@@ -59,13 +59,13 @@ app.get('/api/user/:id', (req, res) => {
     
 
 // Delete User
-app.delete('/api/users', (req, res) => {
+app.delete('/api/users/:id', (req, res) => {
     const db_call = `DELETE FROM user WHERE id = ?`;
     const params = [req.params.id];
 
     db.query(db_call, params, (err, result) => {
         if (err) {
-            res.status(400).json({error: err.message});
+            res.status(400).json({error: res.message});
         } else if (!result.affectedRows) {
         res.json({
             message: 'success'
