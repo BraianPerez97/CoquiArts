@@ -63,7 +63,7 @@ app.delete('/api/users', (req, res) => {
     const db_call = `DELETE FROM user WHERE id = ?`;
     const params = [req.params.id];
 
-    db.query(`DELETE * FROM user WHERE id=1`, (err, result) => {
+    db.query(db_call, params, (err, result) => {
         if (err) {
             res.status(400).json({error: err.message});
         } else if (!result.affectedRows) {
@@ -78,7 +78,7 @@ app.delete('/api/users', (req, res) => {
             });
         }
     });
-})
+});
 // Create User
 app.get('/api/user/:id', (req, res) => {
     const db_call = `INSERT INTO user (first_name, last_name, email, password) VALUES (?,?,?,?)`;
