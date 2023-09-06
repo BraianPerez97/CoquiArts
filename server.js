@@ -45,7 +45,7 @@ app.get('/api/user/:id', (req, res) => {
     const db_call = `SELECT * FROM user WHERE id=?`;
     const params = [req.params.id];
 
-    db.query(db_call, params, (err, row) => {
+    db.query(db_call, params, (err, rows) => {
         if (err) {
             res.status(400).json({ error: err.message});
             return;
@@ -59,7 +59,7 @@ app.get('/api/user/:id', (req, res) => {
     
 
 // Delete User
-db.query(`DELETE * FROM users WHERE id=1`, (err, result) => {
+db.query(`DELETE * FROM user WHERE id=1`, (err, result) => {
     if (err) {
         console.log(err)
     }
