@@ -59,7 +59,7 @@ app.get('/api/user/:id', (req, res) => {
     
 
 // Delete User
-app.delete('/api/users/:id', (req, res) => {
+app.delete('/api/user/:id', (req, res) => {
     const db_call = `DELETE FROM user WHERE id = ?`;
     const params = [req.params.id];
 
