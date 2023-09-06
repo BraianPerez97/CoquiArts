@@ -1,6 +1,7 @@
 // Importing Express module
 const express = require('express');
 var mysql = require('mysql');
+const inputCheck = require('./utils/inputCheck');
 
 // Port designation
 const PORT = process.env.PORT || 3001;
@@ -23,7 +24,7 @@ var db = mysql.createConnection(
 
 // Routes
 
-// return all users
+// GET all users
 app.get('/api/user', (req, res) => {
     
     const db_call = `SELECT * FROM user`;
@@ -40,7 +41,8 @@ app.get('/api/user', (req, res) => {
     });
 });
 
-// get a single candidate
+
+// GET a single user
 app.get('/api/user/:id', (req, res) => {
     const db_call = `SELECT * FROM user WHERE id=?`;
     const params = [req.params.id];
@@ -58,27 +60,39 @@ app.get('/api/user/:id', (req, res) => {
 });
     
 
-// Delete User
+
+// DELETE User
 db.query(`DELETE * FROM user WHERE id=1`, (err, result) => {
     if (err) {
         console.log(err)
     }
     console.log(result)
 });
-// Create User
-app.get("/api/user", (req, res) => {
-    const db_call = `INSERT INTO user (first_name, last_name, email, password) VALUES (?,?,?,?)`;
 
-    const params =["Braian", "Perez", 'bapc@gmail.com', '123456789'];
 
-    db.query(db_call, params, (err, result) => {
+// CREATE User
+app.post("/api/user", ({body}, res) => {
+    const errors = inputCheck(body, 'first_name', 'last_name', 'email', 'passwd');
+
+    if (errors) {
+        res.status(400).json({error: errors});
+        return;
+    }
+    const db_call = `INSERT INTO user (first_name, last_name, email, passwd) VALUES (?,?,?,?)`;
+    const params = [body.first_name, body.last_name, body.email, body.passwd];
+
+    db.query(db_call, params, (err, row) => {
         if (err) {
-            console.log(err);
+            res.status(400).json({error: err.message});
+            return
         }
-        console.log(result);
-    });
+        res.json({
+            message: 'success',
+            data: body
+        })
+    })
 
-})
+});
 
 // Error handling
 app.use((req, res) => {
