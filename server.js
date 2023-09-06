@@ -39,32 +39,45 @@ app.get('/api/user', (req, res) => {
         });
     });
 });
-/*
+
 // get a single candidate
 app.get('/api/user/:id', (req, res) => {
     const db_call = `SELECT * FROM user WHERE id=?`;
     const params = [req.params.id];
 
-    db_query
-})
-    db.query('SELECT * FROM user WHERE id=1', (err, row) => {
+    db.query(db_call, params, (err, rows) => {
         if (err) {
-            console.log(err);
-        }
-        console.log(row);
-    }); */
-
-// Delete User
-app.get('/api/users', (req, res) => {
-    db.query(`DELETE * FROM user WHERE id=1`, (err, result) => {
-        if (err) {
-            res.status(500).json({error: err.message});
+            res.status(400).json({ error: err.message});
+            return;
         }
         res.json({
             message: 'success',
             data: rows
+        });
     });
 });
+    
+
+// Delete User
+app.delete('/api/users', (req, res) => {
+    const db_call = `DELETE FROM user WHERE id = ?`;
+    const params = [req.params.id];
+
+    db.query(`DELETE * FROM user WHERE id=1`, (err, result) => {
+        if (err) {
+            res.status(400).json({error: err.message});
+        } else if (!result.affectedRows) {
+        res.json({
+            message: 'success'
+    });
+        } else {
+            res.json({
+                message: 'deleted',
+                changes: result.affectedRows,
+                id: req.params.id
+            });
+        }
+    });
 })
 // Create User
 app.get('/api/user/:id', (req, res) => {
