@@ -55,25 +55,32 @@ app.get('/api/user/:id', (req, res) => {
     }); */
 
 // Delete User
-db.query(`DELETE * FROM users WHERE id=1`, (err, result) => {
-    if (err) {
-        console.log(err)
-    }
-    console.log(result)
+app.get('/api/users', (req, res) => {
+    db.query(`DELETE * FROM user WHERE id=1`, (err, result) => {
+        if (err) {
+            res.status(500).json({error: err.message});
+        }
+        res.json({
+            message: 'success',
+            data: rows
+    });
 });
+})
 // Create User
-app.get("/api/user", (req, res) => {
+app.get('/api/user/:id', (req, res) => {
     const db_call = `INSERT INTO user (first_name, last_name, email, password) VALUES (?,?,?,?)`;
 
-    const params =["Braian", "Perez", 'bapc@gmail.com', '123456789'];
+    const params =['Braian', 'Perez', 'bapc@gmail.com', '123456789'];
 
     db.query(db_call, params, (err, result) => {
         if (err) {
-            console.log(err);
+            res.status(500).json({error: err.message});
         }
-        console.log(result);
+        res.json({
+            message: 'success',
+            data: rows
     });
-
+});
 })
 
 // Error handling
