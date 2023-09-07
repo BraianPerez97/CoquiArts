@@ -60,14 +60,14 @@ app.get('/api/user/:id', (req, res) => {
 });
     
 
-// Delete User
-app.delete('/api/users/:id', (req, res) => {
-    const db_call = `DELETE FROM user WHERE id=?`;
+// DELETE User
+app.delete('/api/user/:id', (req, res) => {
+    const db_call = `DELETE FROM user WHERE id = ?`;
     const params = [req.params.id];
 
     db.query(db_call, params, (err, result) => {
         if (err) {
-            res.status(400).json({error: err.message});
+            res.status(400).json({error: res.message});
         } else if (!result.affectedRows) {
         res.json({
             message: 'success'
@@ -80,8 +80,8 @@ app.delete('/api/users/:id', (req, res) => {
             });
         }
     });
-})
-// Create User
+});
+// CREATE User
 app.post('/api/user', ({body}, res) => {
     const errors = inputCheck(body, 'first_name', 'last_name', 'email', 'passwd');
 
