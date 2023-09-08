@@ -49,7 +49,7 @@ User.init(
         sequelize,
 
         //create auto timestamp
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
 
         //use underscore instead of camel-casing in db

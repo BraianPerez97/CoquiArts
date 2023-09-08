@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { json } = require('sequelize');
 const { User } = require('../../models');
 
 // GET /user
@@ -11,7 +10,6 @@ router.get('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
-
 });
 
 // GET /user/?
@@ -38,6 +36,18 @@ router.get('/:id', (req, res) => {
 
 // POST /user
 router.post('/', (req, res) => {
+    // expects kwargs (key/value pair)
+    User.create ({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        passwd: req.body.passwd
+    })
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 
 });
 
