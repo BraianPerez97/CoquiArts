@@ -9,7 +9,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 {
     host: 'localhost',
     dialect: 'mysql',
-    port: 3001
+    port: 5001
 });
 
 module.exports = sequelize;
