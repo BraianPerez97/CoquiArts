@@ -3,7 +3,7 @@ CREATE TABLE user (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30),
     email VARCHAR(31) NOT NULL,
-    passwd VARCHAR(30) NOT NULL
+    passwd VARCHAR(60) NOT NULL
     );
 
 CREATE TABLE categories (

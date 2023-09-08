@@ -1,6 +1,7 @@
 // import Model and DataTypes from Sequelizer and db connection
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 // CREATE User Model
 class User extends Model{}
@@ -44,17 +45,26 @@ User.init(
         }
     },
     {
+        hooks: {
+           // setup hook lyfecycle functionality
+           async beforeCreate(dbUserData) {
+            dbUserData.passwd = await bcrypt.hash(dbUserData.passwd, 10);
+                return dbUserData
+            },
+            async beforeUpdate(updateUserData) {
+                updateUserData.passwd = await bcrypt.hash(updateUserData.passwd, 10);
+                return updateUserData;
+            }
+           },
+        
         // Table Config
         //pass imported sequelize connection
         sequelize,
-
         //create auto timestamp
         timestamps: false,
         freezeTableName: true,
-
         //use underscore instead of camel-casing in db
         underscored: true,
-
         //make it so our model stays lowercase in db
         modelName: 'user'
     }
