@@ -22,7 +22,13 @@ var db = mysql.createConnection(
 )
 
 // Routes
-
+// Get Categories
+app.get('/api/categories', (req, res) => {
+    db.query(`SELECT * FROM categories`, (err, res) => {
+        if (err) throw err;
+        req.send(res);
+    });
+});
 // return all users
 app.get('/api/user', (req, res) => {
     
@@ -60,7 +66,7 @@ app.get('/api/user/:id', (req, res) => {
 
 // Delete User
 app.delete('/api/user/:id', (req, res) => {
-    const db_call = `DELETE FROM user WHERE id = ?`;
+    const db_call = `DELETE FROM user WHERE id=?`;
     const params = [req.params.id];
 
     db.query(db_call, params, (err, result) => {
