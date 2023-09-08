@@ -12,9 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on connection to db and server
+//Drop table if exists
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 }).catch(err => {
     console.log(err);
-    app.status(503);
+    res.status(503);
 });
