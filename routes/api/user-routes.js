@@ -56,6 +56,7 @@ router.put('/:id', (req, res) => {
  // expects {name, lastname, email, password}
 
   User.update(req.body, {
+    individualHooks: true,
     where: {
       id: req.params.id
     }
@@ -74,7 +75,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /user
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
  User.destroy({
     where: {
       id: req.params.id
