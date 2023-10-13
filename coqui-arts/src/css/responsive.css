@@ -1,0 +1,32 @@
+
+/* RESPONSIVENESS */
+@media screen and (max-width: 600px) {
+    h1.slogan {
+      font-size: .8em;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    h4.description {
+      font-size: .6em;
+      margin-top: -2rem;
+      margin-bottom: 1rem;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    btn#learn-more {
+      font-size: .5em;
+    }
+  }
+  @media screen and (min-width: 800px) {
+    h1.slogan{
+      margin-bottom: -.8em;
+     
+    }
+  }
+    @media screen and (min-width: 800px) {
+    img.heroDoodle{
+      margin-bottom: -5em;
+      margin-top: -3em;
+     
+    }
+  }

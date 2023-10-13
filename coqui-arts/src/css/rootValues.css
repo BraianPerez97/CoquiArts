@@ -1,0 +1,28 @@
+:root {
+    /* Mains */
+    --white: #f4f4f4;
+    --black: #1a1a1a;
+    --grey: #dbdbdd;
+    /* Accents */
+    --purple: #D0BFFF;
+    --blue: #D2E0FB;
+    --aqua: #9ED2C6;
+    --green: #9FE2BF;
+    --lime: #C4DFAA;
+    --orange: #FEBE8C;
+    --pink: #FFBABA;
+    --blue-purple: #98A8F8;
+    --trendy: #d6f422;
+    --ink-blue: #241AB5;
+    --error: #e06666;
+    /* Fonts */
+    --primary: 'Poppins', sans-serif;
+    --secondary: 'Mynerve', cursive;
+    --mono: 'Raleway','Oxygen Mono', monospace;
+    /* Spacing */
+    --spacing-one: calc(1rem * 0.5);
+    --spacing-two: calc(1rem);
+    --spacing-five: calc(2.5rem);
+  
+  }
+  

@@ -1,0 +1,37 @@
+
+/* --------HERO SECTION-------- */
+.slogan  span{
+    font-family: var(--secondary);
+    font-size: 1.5em;
+    color: var(--ink-blue);
+  
+  }
+  .slogan {
+    color: var(--black);
+    word-spacing: 10px;
+  }
+  .heroDoodle {
+    margin-top: -2rem;
+  }
+  .description {
+    font-family: var(--mono);
+    margin-bottom: 3rem;
+  }
+  .description span {
+    font-family: var(--secondary);
+    color: var(--ink-blue);
+  }
+  /* Hero btn animation */
+  .button-3 {
+    border: 3px solid var(--ink-blue);
+    background-color: transparent;
+    border-radius: 2em;
+    color: var(--ink-blue);
+    transition: .3s;
+    padding: .3rem .9rem;
+  }
+  .button-3:hover {
+    box-shadow: 8px 8px var(--ink-blue);
+    transition: .3s;
+    color: var(--black);
+  }
