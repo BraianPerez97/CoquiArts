@@ -16,6 +16,11 @@
     btn#learn-more {
       font-size: .5em;
     }
+    header, header.burger-menu{
+      margin-top: 1rem;
+      margin-bottom: -1rem;
+    }
+
   }
   @media screen and (min-width: 800px) {
     h1.slogan{
@@ -28,5 +33,14 @@
       margin-bottom: -5em;
       margin-top: -3em;
      
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    .logo{
+      width: 8rem;
+    }
+    div.burger-menu{
+      height: 2rem;
     }
   }

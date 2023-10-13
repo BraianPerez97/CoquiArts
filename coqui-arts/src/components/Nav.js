@@ -1,8 +1,12 @@
 import React from "react";
+import Logo from '../logo_blk.png'
 
 const Nav = () => {
   return (
     <header>
+      <div className='logo'>
+        <img  src={Logo} alt="Coqui Arts logo"></img>
+        </div>
 
       <div className="burger-menu">
         <span></span>
