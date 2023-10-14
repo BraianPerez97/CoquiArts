@@ -2,10 +2,11 @@
 .burger-menu {
     cursor: pointer;
     height: 27px;
-    width: 27px;
-    margin: 50px;
+    margin: 40px 25px;
     overflow: visible;
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 0;
     z-index:2;
   }
   .burger-menu span,
@@ -23,9 +24,9 @@
     content: "";
   }
   .burger-menu span {
-    right: 0px;
+    right: 1rem;
     top: 13px;
-    width: 27px;
+    width: 30px;
     border-radius: 2rem;
   }
   .burger-menu span:before {
@@ -91,4 +92,7 @@
     margin-bottom:30px;
     text-decoration:none;
     font-family: var(--secondary);
+  }
+  .logo{
+    width: 5rem;
   }
