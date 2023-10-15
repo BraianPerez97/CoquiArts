@@ -2,7 +2,9 @@
 import './App.css';
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import './burger'
+import Categories from './components/Categories';
+import HDIW from './components/HDIW'
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -10,7 +12,10 @@ function App() {
       <Nav></Nav>
        <main>
         <Hero></Hero>
+        <Categories></Categories>
+        <HDIW></HDIW>
       </main>
+      <Footer></Footer>
     </div>
   );
 }

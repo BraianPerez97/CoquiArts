@@ -54,7 +54,7 @@
   }
   .burger-menu.close span:after {
     top: 0px;
-    left:0;
+    right:0;
     transform: rotate(90deg);
     opacity:0;
     width:0;
@@ -95,4 +95,5 @@
   }
   .logo{
     width: 5rem;
+    margin-top: -1rem;
   }
