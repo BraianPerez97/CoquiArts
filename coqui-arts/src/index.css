@@ -3,11 +3,13 @@
 @import "./css/rootValues.css";
 @import "./css/hero.css";
 @import "./css/responsive.css";
-
+@import "./css/categories.css";
+@import './css/hdit.css';
+@import "./css/footer.css";
 main {
 	margin: 0 auto;
 	max-width: 90%;
-  padding: 50px 30px;
+  padding-bottom: 50px;
 }
 
 * {

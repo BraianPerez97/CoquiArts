@@ -1,6 +1,18 @@
 import React from "react";
 import Logo from '../logo_blk.png'
 
+
+const Toggle = () => {
+  
+  var burgerMenu = document.getElementsByClassName('burger-menu');
+  var overlay = document.getElementsByClassName('menu');
+
+  burgerMenu.classList.toggle("close");
+  overlay.classList.toggle("overlay");
+};
+
+
+
 const Nav = () => {
   return (
     <header>
@@ -12,7 +24,7 @@ const Nav = () => {
         <span></span>
       </div>
 
-      <div className="menu">
+      <div className="menu" onClick={Toggle}>
         <ul>
           <li>
             <a href="http://localhost:3000/">Home</a>
