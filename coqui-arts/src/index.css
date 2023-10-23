@@ -6,6 +6,9 @@
 @import "./css/categories.css";
 @import './css/hdit.css';
 @import "./css/footer.css";
+@import "./css/searchBar.css";
+@import "./css/login.css";
+
 main {
 	margin: 0 auto;
 	max-width: 90%;

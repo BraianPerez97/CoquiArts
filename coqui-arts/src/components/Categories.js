@@ -7,117 +7,81 @@ import Murals from "../assets/categories/mural.png";
 import Social from "../assets/categories/social.png";
 import Events from "../assets/categories/event.png";
 import Bake from "../assets/categories/bake.png";
+import Photos from "../assets/categories/photography.png";
+
+const categories = [
+  {
+    photo: Photos,
+    name: "Photography",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+  {
+    photo: Graphics,
+    name: "Graphic Design & Illustration",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+  {
+    photo: Music,
+    name: "Music & Jingles",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+  {
+    photo: Bake,
+    name: "Bakegoods",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+  {
+    photo: Murals,
+    name: "Muralists & Street Art",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+  {
+    photo: Social,
+    name: "Social Media Content & Strategy",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+  {
+    photo: Events,
+    name: "Event Services",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+  {
+    photo: Other,
+    name: "Other",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+  },
+];
 
 const Categories = () => {
+  function categorySelected(name) {
+    console.log(`${name}`);
+  }
+
   return (
     <section className="home-categories app">
       <ul className="categories-list hs full">
-        <li className="item">
-    
-            <img id="category-img" src={Graphics} alt="other categories"></img>
+        {categories.map((category) => (
+          <li className="item" onClick={()=> categorySelected(category.name)}>
+            <img
+              id="category-img"
+              src={category.photo}
+              alt="photography category"
+            ></img>
 
             <div className="category-text">
-              <h4 className="category-title">Graphic Design & Illustration</h4>
-              <p className="category-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-                suscipit adipiscing bibendum est.
-              </p>
+              <h4 className="category-title">{category.name}</h4>
+              <p className="category-description">{category.description}</p>
             </div>
-          
-        </li>
-
-<li className="item">
-    
-            <img id="category-img" src={Music} alt="other categories"></img>
-
-            <div className="category-text">
-              <h4 className="category-title">Music & Jingles</h4>
-              <p className="category-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-                suscipit adipiscing bibendum est.
-              </p>
-            </div>
-          
-        </li>
-
-        <li className="item">
-    
-            <img id="category-img" src={Bake} alt="other categories"></img>
-
-            <div className="category-text">
-              <h4 className="category-title">Bakegoods</h4>
-              <p className="category-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-                suscipit adipiscing bibendum est.
-              </p>
-            </div>
-          
-        </li>
-
-        <li className="item">
-    
-            <img id="category-img" src={Murals} alt="other categories"></img>
-
-            <div className="category-text">
-              <h4 className="category-title">Muralist & Street Art</h4>
-              <p className="category-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-                suscipit adipiscing bibendum est.
-              </p>
-            </div>
-          
-        </li>
-
-        <li className="item">
-    
-            <img id="category-img" src={Social} alt="other categories" ></img>
-
-            <div className="category-text">
-              <h4 className="category-title">Social Media Content & Strategy</h4>
-              <p className="category-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-                suscipit adipiscing bibendum est.
-              </p>
-            </div>
-          
-        </li>
-
-        <li className="item">
-    
-            <img id="category-img" src={Events} alt="other categories"></img>
-
-            <div className="category-text">
-              <h4 className="category-title">Event Services</h4>
-              <p className="category-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-                suscipit adipiscing bibendum est.
-              </p>
-            </div>
-          
-        </li>
-
-        <li className="item">
-    
-            <img id="category-img" src={Other} alt="other categories"></img>
-
-            <div className="category-text">
-              <h4 className="category-title">Other</h4>
-              <p className="category-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-                suscipit adipiscing bibendum est.
-              </p>
-            </div>
-          
-        </li>
-
-
+          </li>
+        ))}
       </ul>
     </section>
   );
