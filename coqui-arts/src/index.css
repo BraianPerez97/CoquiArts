@@ -3,11 +3,17 @@
 @import "./css/rootValues.css";
 @import "./css/hero.css";
 @import "./css/responsive.css";
+@import "./css/categories.css";
+@import './css/hdit.css';
+@import "./css/footer.css";
+@import "./css/searchBar.css";
+@import "./css/login.css";
+@import "./css/sign-up.css";
 
 main {
 	margin: 0 auto;
 	max-width: 90%;
-  padding: 50px 30px;
+  padding-bottom: 50px;
 }
 
 * {
@@ -122,9 +128,6 @@ span[role="img"] {
   cursor: default;
 }
 
-form {
-  width: 40%;
-}
 
 input {
   font-size: 1rem;

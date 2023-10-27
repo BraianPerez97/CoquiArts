@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 75vh;
+    width: 100%;
+  }
+  section.sign-up-card.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+.col-2 {
+    margin-top: 15vh;
+}
+  .col-1{
+    margin-top: 16vh;
+
+  }
+  .background-img2 {
+    position: absolute;
+    left: 0;
+    bottom: 18vh;
+    height: 60vh;
+    z-index: -1;
+  }
+  
+  .form-box {
+    width: 380px;
+    height: 450px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0.8;
+    border-radius: 2%;
+  }
+  button.btn-login {
+    margin-bottom: 3vh;
+    border: solid 3px var(--grey);
+    width: 25vh;
+    font-family: var(--primary);
+    background-color: transparent;
+  }
+  
+  .message {
+    display: flex;
+    justify-content:space-between;
+    flex-direction: column;
+    width: auto;
+    color: var(--grey);
+  }
+  div.message div {
+    margin-bottom: 2vh;
+  }
+  input.form-control {
+    height: 8vh;
+    width: 38vh;
+    padding-left: 2vh;
+    margin-bottom: 3vh;
+    margin-right: 2vh;
+    border: solid 3px var(--black);
+    border-radius: 10px;
+    font-size: 1.5rem;
+  }
+  .card-title {
+    font-family: var(--primary);
+    margin-bottom: 3vh;
+    font-size: 3rem;
+  }
+  .card-title span {
+    font-family: var(--secondary);
+    font-weight: 600;
+    font-size: 3.2rem;
+  }
+  .login-btn {
+    position: absolute;
+    left: 10vh;
+    bottom: 8vh;;
+  }
+  .login-btn p {
+    font-family: var(--primary);
+    color: var(--black);
+  }
+  .btn-small2 {
+    background-color: transparent;
+    color: var(--black);
+    font-family: var(--primary);
+    border: solid 3px var(--grey);
+    padding: .5rem 3rem;
+  }
+  
+  .btn-small2:hover {
+    background-color: var(--grey);
+    color: var(--black);
+  }

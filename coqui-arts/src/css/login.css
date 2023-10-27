@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  width: 100%;
+}
+
+.background-img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 60vh;
+  z-index: -1;
+}
+
+.form-box {
+  width: 380px;
+  height: 450px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0.8;
+  border-radius: 2%;
+}
+button.btn-login {
+  margin-bottom: 3vh;
+  border: solid 3px var(--grey);
+  width: 25vh;
+  font-family: var(--primary);
+  background-color: transparent;
+}
+
+.message {
+  display: flex;
+  justify-content:space-between;
+  flex-direction: column;
+  width: auto;
+  color: var(--grey);
+}
+div.message div {
+  margin-bottom: 2vh;
+}
+input.form-control {
+  height: 8vh;
+  width: 38vh;
+  padding-left: 2vh;
+  margin-bottom: 3vh;
+  border: solid 3px var(--black);
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+.card-title {
+  font-family: var(--primary);
+  margin-bottom: 3vh;
+  font-size: 3rem;
+}
+.card-title span {
+  font-family: var(--secondary);
+  font-weight: 600;
+  font-size: 3.2rem;
+}
+.sign-up {
+  position: absolute;
+  left: 10vh;
+  bottom: 1vh;;
+}
+.sign-up p {
+  font-family: var(--primary);
+  color: var(--white);
+}
+.btn-small {
+  background-color: transparent;
+  color: var(--white);
+  font-family: var(--primary);
+  border: solid 3px var(--grey);
+  padding: .5rem 3rem;
+}
+
+.btn-small:hover {
+  background-color: var(--grey);
+  color: var(--black);
+}
