@@ -95,5 +95,5 @@
   }
   .logo{
     width: 5rem;
-    margin-top: -1rem;
+    position: absolute;
   }
