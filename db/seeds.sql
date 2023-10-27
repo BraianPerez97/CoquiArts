@@ -1,7 +1,7 @@
-INSERT INTO user (first_name, last_name, email, passwd)
+INSERT INTO user (first_name, last_name, email, passwd, json_path, cat_id)
 VALUES
-    ('Nashalys', 'Fernandez', 'nashalys@gmail.com', 'passwd1234'),
-    ('Braian', 'Perez', 'bapc@gmail.com', 'passwd456');
+    ('Nashalys', 'Fernandez', 'nashalys@gmail.com', 'passwd1234', 'ABC123', 1),
+    ('Braian', 'Perez', 'bapc@gmail.com', 'passwd456', 'ABC123', 2);
 
 INSERT INTO categories (name, description)
 VALUES
