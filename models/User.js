@@ -10,6 +10,7 @@ class User extends Model {
         // Hash the password
         userData.passwd = await bcrypt.hash(userData.passwd, 10);
 
+
             // Check if the email already exists
         const existingUser = await User.findOne({
             where: { email: userData.email },
