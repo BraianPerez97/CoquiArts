@@ -8,6 +8,7 @@
 @import "./css/footer.css";
 @import "./css/searchBar.css";
 @import "./css/login.css";
+@import "./css/sign-up.css";
 
 main {
 	margin: 0 auto;
@@ -127,9 +128,6 @@ span[role="img"] {
   cursor: default;
 }
 
-form {
-  width: 40%;
-}
 
 input {
   font-size: 1rem;
