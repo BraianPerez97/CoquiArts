@@ -4,7 +4,7 @@
 }
 .card-title2{
     font-family: var(--primary);
-    margin-top: 40vh;
+    margin-top: 27vh;
     font-size: 4rem;
 }
 
@@ -55,7 +55,6 @@
     justify-content: space-around;
 }
 .info-title {
-    padding-top: 4em;
     margin-bottom: 2vh;
 }
 .info-sub {

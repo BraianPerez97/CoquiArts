@@ -4,8 +4,16 @@
     padding: 0;
     font-size: 0.5rem;
   }
+ 
 }
 @media screen and (min-width: 300px) {
+  div.logo {
+    width: 6rem;
+  }
+  .info-title {
+    padding-top: 1em;
+  } 
+  
   img#category-img {
     height: 11rem;
     margin-left: 0;
@@ -20,7 +28,6 @@
 }
 @media screen and (min-width: 600px) {
   div.logo {
-    margin-top: 0rem;
     width: 8rem;
   }
   img.heroDoodle {
@@ -117,6 +124,17 @@
   .w-title .card-p {
     margin-top: 2em;
   }
+    .w-title h1.card-title2 {
+    margin-top: 20vh;
+    font-size: 2rem;
+    margin-bottom: -.5em;
+  }
+  img#logotype {
+    height: 8em;
+  }
+  .card-p{
+    margin-top: 1em;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -151,7 +169,7 @@
     display: flex;
     justify-content: flex-end;
   }
- 
+  
 }
 @media screen and (max-width: 1000px) {
   .app {
@@ -160,14 +178,18 @@
 }
 
 @media screen and (min-width: 1000px) {
+  .info-title {
+    padding-top: 4em;
+  }
   div.hero {
-    margin-top: 8rem;
+    padding-top: 8rem;
   }
   img.heroDoodle {
     width: 70%;
   }
   div.logo {
     float: left;
+    margin-top: -1em;
   }
   li.item {
     margin-bottom: -1rem;
