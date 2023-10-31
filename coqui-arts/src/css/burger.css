@@ -93,7 +93,7 @@
     text-decoration:none;
     font-family: var(--secondary);
   }
-  .logo{
+  img.logo{
     width: 5rem;
     margin-top: -1em;
   }

@@ -1,14 +1,20 @@
-//import logo from './logo_blk.png';
-import './App.css';
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Categories from './components/Categories';
-import HDIW from './components/HDIW'
-import Footer from './components/Footer';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import "./App.css";
+import Nav from "./components/Nav";
+import Hero from "./components/Hero";
+import Categories from "./components/Categories";
+import HDIW from "./components/HDIW";
+import Footer from "./components/Footer";
 //import ListCategory from './components/ListCategory';
 //import SearchBar from './components/SearchBar';
-//import Login from './pages/Login';
+
+import Login from "./pages/Login";
 import Sign from './pages/Sign-up';
+import WelcomeCard from "./components/WelcomeCard";
+import InfoCards from "./components/InfoCards";
+
 
 /*let products = [
   'apples', 'bananas', 'grapefruit', 'kiwi', 'avocados', 
@@ -21,18 +27,19 @@ import Sign from './pages/Sign-up';
 <ListCategory></ListCategory>
 ];*/
 
+
 function App() {
   return (
     <div className="App">
       <Nav></Nav>
        <main>
-        <Sign></Sign>
-        
-        <Hero></Hero>
-        <Categories></Categories>
-        <HDIW></HDIW>
-      </main>
-      <Footer></Footer>
+
+        <InfoCards></InfoCards>
+    
+
+       </main>
+        <Footer></Footer>
+
     </div>
   );
 }
