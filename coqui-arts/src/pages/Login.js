@@ -12,7 +12,8 @@ const Login = () => {
 
       <div className="form">
         <form>
-           <h1 className="card-title">Are you <span>registered?</span></h1>
+           <h1 className="card-title1">Are you <span>registered?</span></h1>
+           <p className="card-p">Let’s check those credentials</p>
            
             <input type="email" className="form-control" placeholder="Email" />
      
@@ -38,7 +39,7 @@ const Login = () => {
               <input id="rem-check" type="checkbox" /> Remember Me
             </div>
             <div>
-              <a href="#">Forgot your password?</a>
+              Forgot your password?
             </div>
           </div>
 
