@@ -1,8 +1,7 @@
 //Dependencies
 import React from "react";
+import {Link} from 'react-router-dom';
 import ListCategory from './ListCategory';
-
-
 
 //Images
 import LogoType from '../assets/logos/LogoType.png'
@@ -24,9 +23,9 @@ const Welcome = () => {
      
     <ListCategory></ListCategory>
 
-          <button type="button" className="btn continue">
+<Link exact to="/sign-up/welcome/tips"><button type="button" className="btn continue">
             CONTINUE
-          </button>
+          </button></Link>  
 
           <div className="w-message">
             <div>

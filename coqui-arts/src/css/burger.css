@@ -91,7 +91,7 @@
     font-size: 32px;
     margin-bottom:30px;
     text-decoration:none;
-    font-family: var(--secondary);
+    font-family: var(--Primary);
   }
   img.logo{
     width: 5rem;
