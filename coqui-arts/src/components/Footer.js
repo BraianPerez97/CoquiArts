@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import Terms from "../pages/Policies/Terms.js";
-import Conditions from "../pages/Policies/Conditions.js";
-import Privacy from "../pages/Policies/Privacy.js";
+import Terms from "../pages/Policies/Terms";
+
+import Conditions from "../pages/Policies/Conditions";
+
+import Privacy from "../pages/Policies/Privacy";
 
 //images
 import Facebook from "../assets/socialsIcons/facebook.png";
@@ -57,18 +59,17 @@ const Footer = () => {
           <p class="copyright">CoquiArts © 2023</p>
           <div className="agreements">
             <ul className="policies">
-              <BrowserRouter>
-                <Routes>
-                  <Route>{Terms}</Route>
+              <Link exact to="/terms">
+                Terms
+              </Link>
 
-                  <Route>
-                    {Conditions}
-                  </Route>
-                  <Route>
-                    {Privacy}
-                  </Route>
-                </Routes>
-              </BrowserRouter>
+              <Link exact to="/conditions">
+                Conditions
+              </Link>
+
+              <Link exact to="/privacy">
+                Privacy
+              </Link>
             </ul>
           </div>
         </footer>

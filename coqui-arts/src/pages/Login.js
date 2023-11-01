@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import Background from "../assets/login/Spy.png";
 
 const Login = () => {
@@ -6,7 +7,7 @@ const Login = () => {
     <section className="login-card container container2">
       <img
         src={Background}
-        alt="an doodle of a ghost "
+        alt="a doodle of a ghost "
         className="background-img"
       ></img>
 
@@ -31,7 +32,7 @@ const Login = () => {
           </div>
 
           <button type="button" className="btn btn-login">
-            LOGIN
+            LET ME IN!
           </button>
 
           <div className="message">
@@ -45,9 +46,9 @@ const Login = () => {
 
           <div className="sign-up">
             <p>Don't have an account?</p>
-          <button type="button" className="btn btn-small">
+          <Link exact to="/sign-up"><button type="button" className="btn btn-small">
             Create one
-          </button>
+          </button></Link>
           </div>
         </form>
       </div>
