@@ -49,7 +49,7 @@ const HDIW = () => {
       </div>
       <div id="browse">
         <btn type="button" id="browse">
-          <span className="button-2">Browse talent</span>
+          <a href="#Cat"><span className="button-2">Browse talent</span></a>
         </btn>
       </div>
     </section>
