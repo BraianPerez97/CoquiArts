@@ -66,7 +66,7 @@ const Categories = () => {
   }
 
   return (
-    <section className="home-categories app">
+    <section className="home-categories app" id="Cat">
       <ul className="categories-list hs full">
         {categories.map((category) => (
           <li className="item" onClick={()=> categorySelected(category.name)}>
