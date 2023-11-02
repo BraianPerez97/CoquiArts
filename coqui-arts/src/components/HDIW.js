@@ -48,9 +48,9 @@ const HDIW = () => {
         </div>
       </div>
       <div id="browse">
-      <btn  type="button" id='browse'>
-        <span className="button-2">Browse talent</span>
-      </btn>
+        <btn type="button" id="browse">
+          <span className="button-2">Browse talent</span>
+        </btn>
       </div>
     </section>
   );

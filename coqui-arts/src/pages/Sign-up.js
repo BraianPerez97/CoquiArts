@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import Background from "../assets/login/Ghost.png";
 
 const Sign = () => {
@@ -39,17 +40,17 @@ const Sign = () => {
               placeholder="Confirm password"
             />
           </div>
-
+          <Link exact to="/sign-up/welcome">
           <button type="button" className="btn btn-login">
             I'M READY
-          </button>
+          </button></Link>
         </form>
       </div>
         <div className="login-btn">
           <p>Have an account already?</p>
-          <button type="button" className="btn btn-small2">
+          <Link exact to="/login"><button type="button" className="btn btn-small2">
             Login
-          </button>
+          </button></Link>
         </div>
     </section>
   );
