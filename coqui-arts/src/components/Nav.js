@@ -4,67 +4,38 @@ import Logo from "../logo_blk.png";
 import "../css/burger.css";
 
 const Nav = () => {
-  /* ======================
-        MENU OPTIONS 
-  ========================*/
-  function toggleMenu() {
-    window.alert("hello");
-  }
 
-  const [menu] = useState([
-    {
-      name: "Home",
-      ref: "http://localhost:3000/",
-    },
-    {
-      name: "About us",
-      ref: "http://localhost:3000/about-us",
-    },
-    {
-      name: "FAQ",
-      ref: "http://localhost:3000/faq",
-    },
-    // login conditional
-    [
-      {
-        name: "Login",
-        ref: "http://localhost:3000/login",
-      },
-      {
-        name: "Logout",
-        ref: "http://localhost:3000/",
-      },
-    ],
-  ]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  function sayName(name) {
-    window.alert(name);
-  }
 
   return (
     <header>
       <div className="logo">
         <Link exact to="/">
-          {" "}
           <img src={Logo} alt="Coqui Arts logo"></img>
         </Link>
       </div>
 
-      <button className="burger-menu">
+      <button className="burger-menu" onClick={()=> {
+        setMenuOpen(!menuOpen);
+      }}>
         <span></span>
       </button>
 
-      <div className="menu">
+      <div className={menuOpen ? "overlay" : "menu"}>
         <ul>
-          {
-            (menu.map = (category) => {
-              <li onClick={() => sayName(category.name)}>
-                <Link exact to={category.ref}>
-                  <a href={category.ref}>{category.name}</a>
-                </Link>
-              </li>;
-            })
-          }
+              <Link to='/' onClick={()=>{setMenuOpen(!menuOpen)}}><li>
+              Home
+              </li></Link>
+              <Link to='/about-us' onClick={()=>{setMenuOpen(!menuOpen)}}><li>
+              About Us
+              </li></Link>
+              <Link to='/faq' onClick={()=>{setMenuOpen(!menuOpen)}}><li>
+              FAQ
+              </li></Link>
+              <Link to='/login' onClick={()=>{setMenuOpen(!menuOpen)}}><li>
+              Login
+              </li></Link>
         </ul>
       </div>
     </header>
