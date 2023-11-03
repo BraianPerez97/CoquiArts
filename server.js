@@ -5,8 +5,11 @@ const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+const bodyParser = require('body-parser');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // turn on routes
 app.use(routes);
