@@ -1,5 +1,9 @@
+const express = require('express');
 const router = require('express').Router();
 const { Category } = require('../../models');
+
+// Middleware to parse JSON data from the request body
+router.use(express.json());
 
 // Get all categories
 router.get('/', (req, res) => {
@@ -36,6 +40,9 @@ router.get('/:id', (req, res) => {
 
 // Create a new category
 router.post('/', (req, res) => {
+  //Expects JSON data in the request body
+  const categoryData = req.body;
+
   Category.create({
     name: req.body.name, // Assuming you send the category name in the request body
     description: req.body.description, // Assuming you send the category description in the request body
@@ -49,18 +56,14 @@ router.post('/', (req, res) => {
 
 // Update a category by ID
 router.put('/:id', (req, res) => {
+  // Validate and Update category body here
+  const updatedCategoryData = req.body;
   // Validate and update the category here
-  Category.update(
-    {
-      name: req.body.name, // Assuming you send the updated category name in the request body
-      description: req.body.description, // Assuming you send the updated category description in the request body
+  Category.update(updatedCategoryData, {
+    where: {
+      id: req.params.id,
     },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
+  })
     .then(dbCategoryData => {
       if (!dbCategoryData[0]) {
         res.status(404).json({ message: 'No category found with this id' });

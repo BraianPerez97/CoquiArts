@@ -8,6 +8,12 @@
     "connect-session-sequelize": "^7.1.7",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+<<<<<<<<< Temporary merge branch 1
+    "lru-cache": "^10.0.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+=========
+    "express-session": "^1.17.3",
     "mysql": "^2.18.1",
     "mysql2": "^3.6.0",
     "nodemon": "^3.0.1",
