@@ -1,95 +1,95 @@
-/* --------NAV MENU-------- */
+img.logo {
+  width: 5rem;
+  margin-top: -1em;
+}
+/* --------NAV CLOSE MENU-------- */
 .burger-menu {
-    cursor: pointer;
-    height: 27px;
-    margin: 40px 25px;
-    overflow: visible;
-    position: absolute;
-    right: 0;
-    top: 1.2rem;
-    z-index:2;
-  }
-  .burger-menu span,
-  .burger-menu span:before,
-  .burger-menu span:after {
-    display: block;
-    height: 4px;
-    opacity: 1;
-    position: absolute;
-    transition: 0.3s ease-in-out;
-  }
-  .burger-menu span:before,
-  .burger-menu span:after {
-    content: "";
-  }
-  .burger-menu span {
-    right: 1rem;
-    top: 13px;
-    width: 30px;
-    border-radius: 2rem;
-    background-color: black;
-  }
-  .burger-menu span:before {
-    left: 0px;
-    top: -10px;
-    width: 16px;
-    border-radius: 2rem;
-    background-color: black;
-  }
-  .burger-menu span:after {
-    background-color: black;
-    right: 0px;
-    top: 10px;
-    width: 15px;
-    border-radius: 2rem;
-  }
+  cursor: pointer;
+  height: 27px;
+  padding: 40px 25px;
+  overflow: visible;
+  position: -web-sticky;
+  position: fixed;
+  top: 3em;
+  right: 2em;
+  z-index: 2;
+}
+.burger-menu span,
+.burger-menu span:before,
+.burger-menu span:after {
+  display: block;
+  height: 4px;
+  opacity: 1;
+  position: absolute;
+  transition: 0.3s ease-in-out;
+}
+.burger-menu span:before,
+.burger-menu span:after {
+  content: "";
+}
+.burger-menu span {
+  width: 30px;
+  border-radius: 2rem;
+  background-color: black;
+}
+.burger-menu span:before {
+  left: 0px;
+  top: -10px;
+  width: 16px;
+  border-radius: 2rem;
+  background-color: black;
+}
+.burger-menu span:after {
+  background-color: black;
+  right: 0px;
+  top: 10px;
+  width: 15px;
+  border-radius: 2rem;
+}
 
-  .menu{
-    z-index:1;
-    min-width:100%;
-    min-height:100%;
-    position: fixed;
-    top:0;
-    height:0;
-    visibility: hidden;
-    opacity: 0;
-    text-align:center;
-    padding-top:20px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .overlay{
-    visibility: visible;
-    padding-top:100px;
-    background:rgba(0, 0, 0, 0.883);
-    z-index:1;
-    min-width:100%;
-    min-height:100%;
-    position: fixed;
-    top: 0;
-    text-align:center;
-    padding-top:3em;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .overlay ul {
-    display: flex;
-    flex-direction: column;
-  }
-  .overlay a li{
-    list-style:none;
-    padding: 0.5em;
-    color:var(--white);
-    font-size: 2em;
-    text-decoration:none;
-    font-family: var(--Primary);
-  }
-  .overlay a li::selection{
-    user-select: none;
-  }
-  img.logo{
-    width: 5rem;
-    margin-top: -1em;
-  }
+/* --------NAV OPEN MENU-------- */
+.menu {
+  z-index: 1;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+  padding-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.overlay {
+  visibility: visible;
+  padding-top: 100px;
+  background: rgba(0, 0, 0, 0.883);
+  z-index: 1;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  padding-top: 3em;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.overlay ul {
+  display: flex;
+  flex-direction: column;
+}
+.overlay a li {
+  list-style: none;
+  padding: 0.5em;
+  color: var(--white);
+  font-size: 2em;
+  text-decoration: none;
+  font-family: var(--Primary);
+}
+.overlay a li::selection {
+  user-select: none;
+}
