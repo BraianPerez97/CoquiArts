@@ -1,69 +1,76 @@
 #logotype {
-    max-height: 8em;
-    margin-bottom: -25px;
+  max-height: 8em;
+  margin-bottom: -25px;
 }
-.card-title2{
-    font-family: var(--primary);
-    margin-top: 27vh;
-    font-size: 4rem;
+.card-title2 {
+  font-family: var(--primary);
+  margin-top: 27vh;
+  font-size: 4rem;
 }
 
 /* categories list */
 .w-title {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 .w-message {
-    color: var(--black);
-    font-family: var(--primary);
-    font-weight: 400;
+  color: var(--black);
+  font-family: var(--primary);
+  font-weight: 400;
 }
-.mini-mess{
-    font-size: small;
-    padding-bottom: 10vh;
+.mini-mess {
+  font-size: small;
+  padding-bottom: 10vh;
 }
 .continue {
-    width: 30vh;
-    border: solid 3px var(--black);
-    margin: 4rem;
+  width: 30vh;
+  border: solid 3px var(--black);
+  margin: 4rem;
 }
 .continue:hover {
-    background-color: var(--orange);
-    border-color: var(--orange);
-    color: var(--white);
-    transition: all .2s ease-Out;
+  background-color: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+  transition: all 0.2s ease-Out;
 }
 /* INFO CARDS */
 .next {
-    border-color: var(--lime);
-    width: 20vh;
-    font-family: var(--primary);
+  border-color: var(--lime);
+  width: 20vh;
+  font-family: var(--primary);
 }
 .next:hover {
-    background-color: var(--lime);
-    border-color: var(--lime);
+  background-color: var(--lime);
+  border-color: var(--lime);
 }
 #cat-img {
-    flex-direction: row;
-    margin-bottom: -.2em;
+  flex-direction: row;
+  margin-bottom: -0.2em;
 }
 .cat {
-    font-family: var(--primary);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  font-family: var(--primary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .info-title {
-    margin-bottom: 2vh;
+  margin-bottom: 2vh;
 }
 .info-sub {
-    padding-top: -1em;
+  font-weight: 400;
 }
 .info-item {
-    flex-direction: column;
-    margin-top: 5em;
-    text-align: left;
-    width: 20em;
+  flex-direction: column;
+  margin-top: 5em;
+  text-align: left;
+  width: 20em;
+}
+.tip-description {
+  font-size: 0.7rem;
+  max-width: 20rem;
+  font-family: var(--primary);
+  font-weight: 500;
+  line-height: 2;
 }

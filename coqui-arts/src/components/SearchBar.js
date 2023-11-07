@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, SearchInput } from "react";
+import UserList from "./UserGallery";
 
 export default function SearchBar(props) {
   const [searchVal, setSearchVal] = useState("");
@@ -46,3 +47,19 @@ export default function SearchBar(props) {
     </div>
   );
 }
+
+/*
+function SearchableUserList({ users }) {
+  const [searchText, setSearchText] = useState('');
+  const foundUsers = filterUsers(users, searchText);
+  return (
+    <>
+      <SearchInput
+        value={searchText}
+        onChange={newText => setSearchText(newText)} />
+      <UserList
+        videos={foundUsers}
+        emptyHeading={`No matches for “${searchText}”`} />
+    </>
+  );
+}*/

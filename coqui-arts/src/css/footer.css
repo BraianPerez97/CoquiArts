@@ -28,8 +28,8 @@
 }
 
 div.social {
-    margin-top: 2rem;
-    margin-bottom: -1rem;
+  margin-top: 2rem;
+  margin-bottom: -1rem;
 }
 .footer-basic .social > a {
   width: 40px;
@@ -60,30 +60,30 @@ div.social {
 }
 
 ul.policies {
-    font-size: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 ul.list-inline {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 75px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 75px;
 }
-div.agreements{
-    display: flex;
-    flex-direction:column;
-    flex-wrap: wrap;
-    margin-top: 30px;
+div.agreements {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 30px;
 }
 li.list-inline-item {
-    margin: 0 -1rem;
-    text-align: left;
+  margin: 0 -1rem;
+  text-align: left;
 }
 
 li.home {
-    margin-top: 50px;
+  margin-top: 50px;
 }

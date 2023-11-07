@@ -1,0 +1,41 @@
+.about-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-weight: 400;
+  max-width: 50vh;
+}
+.about-us {
+  padding-top: 15vh;
+}
+
+.about-us h3 {
+  font-size: 2em;
+}
+
+.about-card span {
+  color: var(--ink-blue);
+  font-size: 0.8em;
+}
+
+.about-us p {
+  text-align: left;
+  padding-top: 30px;
+  font-size: 0.8em;
+}
+.about-right {
+  margin: 2em;
+  background-color: var(--blue);
+  padding: 2em;
+}
+
+.about-left {
+  margin: 2em;
+  background-color: var(--purple);
+  padding: 2em;
+}
+
+.about-img {
+  width: 20%;
+  padding-top: 1em;
+}

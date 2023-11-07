@@ -1,4 +1,7 @@
+//This component is the section of categories in home
 import React from "react";
+import { Link } from "react-router-dom";
+
 //Images
 import Other from "../assets/categories/other.png";
 import Graphics from "../assets/categories/graphic.png";
@@ -9,6 +12,7 @@ import Events from "../assets/categories/event.png";
 import Bake from "../assets/categories/bake.png";
 import Photos from "../assets/categories/photography.png";
 
+//Types of categories
 const categories = [
   {
     photo: Photos,
@@ -68,18 +72,22 @@ const Categories = () => {
   return (
     <section className="home-categories app" id="Cat">
       <ul className="categories-list hs full">
+        {/*Maps through types of categories array for DRY*/}
         {categories.map((category) => (
-          <li className="item" onClick={()=> categorySelected(category.name)}>
-            <img
-              id="category-img"
-              src={category.photo}
-              alt="photography category"
-            ></img>
+          <li className="item" onClick={() => categorySelected(category.name)}>
+            {/*Navigates to 'category' but displays the name of the category*/}
+            <Link to={`/${category.name}`} key={category.name}>
+              <img
+                id="category-img"
+                src={category.photo}
+                alt="photography category"
+              ></img>
 
-            <div className="category-text">
-              <h4 className="category-title">{category.name}</h4>
-              <p className="category-description">{category.description}</p>
-            </div>
+              <div className="category-text">
+                <h4 className="category-title">{category.name}</h4>
+                <p className="category-description">{category.description}</p>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>
