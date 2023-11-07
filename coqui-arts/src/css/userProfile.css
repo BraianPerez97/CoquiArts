@@ -1,0 +1,67 @@
+#profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#profile-form label {
+    margin: 3vh;
+}
+input#user-description{
+    max-width: 50em;
+    max-height: 30em;
+    min-height: 20em;
+
+}
+
+/* USER CARD */
+.gallery{
+    padding-top: 10em;
+}
+
+
+.gradiant {
+    background-image: linear-gradient(var(--blue), var(--blue-purple));
+    height: 8em;
+    border-radius: 4px 0px;
+    margin-top: 0;
+    border-radius: 20px 20px 15px 15px;
+}
+.profile-down img {
+    height: 15em;
+    margin-top: -85px;
+    margin-right: 50px;
+    background: var(--white);
+}
+.profile-down {
+    background-color: white;
+    padding-bottom: 50px;
+    border-radius: 15px 15px 0 0;
+    margin-bottom: 70px;
+    margin-top: 5%;
+}
+.profile-title {
+    font-weight: 600;
+}
+.userName {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--black);
+}
+.profile-description {
+    padding: 20px 40px;
+    font-size: 16px;
+}
+
+.profile-button {
+    font-size: 16px;
+    border: solid 3px var(--blue-purple);
+    padding-top: 8px;
+    padding-bottom: 10px;
+    border-radius: 40px;
+}
+
+.profile-button:hover{
+    background-color: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+}

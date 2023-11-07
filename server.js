@@ -18,8 +18,12 @@ const models = {
 };
 
 // Set up middleware to parse JSON and URL-encoded data
+
+const bodyParser = require('body-parser');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Configure session settings
 const sess = {

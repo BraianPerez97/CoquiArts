@@ -1,167 +1,218 @@
-
 /* RESPONSIVENESS */
- @media screen and (max-width: 400px) {
-    ul.categories-list.hs.full {
-      padding: 0;
-      font-size: .5rem;
-    }
-    
+@media screen and (max-width: 400px) {
+  ul.categories-list.hs.full {
+    padding: 0;
+    font-size: 0.5rem;
   }
-  @media screen and (min-width: 300px) {
-    img#category-img {
-      height: 11rem;
-      margin-left: 0;
-      position: relative;
-      margin-top: 0px;
-    }
-    .hs > li, .item {
-      scroll-snap-align: center;
-      display: block;
-    }
+}
+@media screen and (min-width: 300px) {
+  div.logo {
+    width: 6rem;
   }
-  @media screen and (min-width: 600px) {
-    div.logo {
-      margin-top: 0rem;
-      width: 8rem;
-    }
-    img.heroDoodle {
+  .info-title {
+    padding-top: 1em;
+  }
+
+  img#category-img {
+    height: 11rem;
+    margin-left: 0;
+    position: relative;
+    margin-top: 0px;
+  }
+  .hs > li,
+  .item {
+    scroll-snap-align: center;
+    display: block;
+  }
+}
+@media screen and (min-width: 600px) {
+  div.logo {
+    width: 8rem;
+  }
+  img.heroDoodle {
     margin-top: -2rem;
   }
 }
-  @media screen and (max-width: 600px) {
-    h1.slogan {
-      font-size: .8em;
-    }
-    h4.description {
-      font-size: .6em;
-      margin-top: -2rem;
-      margin-bottom: 1rem;
-    }
-    btn#learn-more {
-      font-size: .5em;
-    }
-    header, .burger-menu{
-      margin-top: 2rem;
-      margin-bottom: -1rem;
-    }
-    .hero {
-      margin-top: 1rem;
-    }
-  
-    h4.category-title {
-      font-size: 1rem;
-    }
-    p.category-description {
-      font-size: .5rem;
-      width: 150px;
-    }
-    div.category-text{
-      margin-right: 5rem;
-    }
-    span.button-2 {
-      font-size: .5em;
-    }
-    h1.HW-title {
-      font-size: 2rem;
-    }
-    h1.HW-title span {
-      font-size: 3rem;
-    }
+@media screen and (max-width: 600px) {
+  h1.slogan {
+    font-size: 0.8em;
   }
-  
-  @media screen and (max-width: 800px) {
-    .hs {
-      scroll-snap-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      scroll-snap-type: y proximity;
-    }
-    .app {
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-     .hero {
-      margin-top: 2rem;
-    }
-    img#category-img {
-      height: 8rem;
-    }
-    img.infoGraphics{
-      height: 12rem;
-    }
-    div.photo-card h3 {
-      font-size: 1.5rem;
-    }
-    div.photo-card p {
-      font-size: 1rem;
-    }
+  h4.description {
+    font-size: 0.6em;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+  }
+  btn#learn-more {
+    font-size: 0.5em;
+  }
+  header,
+  .burger-menu {
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+  }
+  .hero {
+    margin-top: 1rem;
   }
 
-  @media screen and (min-width: 800px) {
-    .burger-menu span {
-      margin-top: -1.5rem;
-    }
-    img.heroDoodle{
-      margin-bottom: -5em;
-      margin-top: -3em;
-      
-    }
-    h1.slogan{
-      margin-bottom: 0em;
-      
-    }
-    div.burger-menu{
-      height: 2rem;
-      margin-top: 4rem;
-    }
-    img.heroDoodle {
-      width: 70%;
-      margin-bottom: 0rem;
-    }
-    .description {
-      margin-top: -25px;
-    }
-    section.home-categories {
-      margin-bottom: 50px;
-    }
-    div.category-text {
-      width: 500px;
-    }
-    .login-card div.form{
-      display: flex;
-      justify-content: flex-end;
-    }
+  h4.category-title {
+    font-size: 1rem;
   }
-  @media screen and (max-width: 1000px) {
-    .app {
-      width: 70%;
-    }
-   
+  p.category-description {
+    font-size: 0.5rem;
+    width: 150px;
   }
-  
-  @media screen and (min-width: 1000px) {
-    div.hero {
-      margin-top: 8rem;
-    }
-    img.heroDoodle {
-      width: 70%;
-    }
-    div.logo {
-      float: left;
-    }
-    li.item {
-      margin-bottom: -1rem;
-    }
-  
+  div.category-text {
+    margin-right: 5rem;
   }
-  @media screen and (min-width: 1400px) {
-    main {
-      padding-bottom: 50px;
-    }
-    img.heroDoodle {
-      margin: -5rem 0;
-    }
-   
+  span.button-2 {
+    font-size: 0.5em;
   }
+  h1.HW-title {
+    font-size: 2rem;
+  }
+  h1.HW-title span {
+    font-size: 3rem;
+  }
+  h1.card-title.info-title,
+  h1.card-title.info-title span {
+    font-size: 2rem;
+  }
+  span.info-sub {
+    font-size: small;
+  }
+  p.category-description {
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .hs {
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    scroll-snap-type: y proximity;
+  }
+  .app {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .hero {
+    margin-top: 2rem;
+  }
+  img#category-img {
+    height: 8rem;
+  }
+  img.infoGraphics {
+    height: 12rem;
+  }
+  div.photo-card h3 {
+    font-size: 1.5rem;
+  }
+  div.photo-card p {
+    font-size: 1rem;
+  }
+  .w-title h1.card-title2 {
+    margin-top: 70vh;
+    font-size: 3rem;
+  }
+  .w-title img {
+    height: 5em;
+  }
+  .w-title .card-p {
+    margin-top: 2em;
+  }
+  .w-title h1.card-title2 {
+    margin-top: 20vh;
+    font-size: 2rem;
+    margin-bottom: -0.5em;
+  }
+  img#logotype {
+    height: 8em;
+  }
+  .card-p {
+    margin-top: 1em;
+  }
+  img.background-img2 {
+    opacity: 40%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .burger-menu span {
+    margin-top: -1.5rem;
+  }
+  img.heroDoodle {
+    margin-bottom: -5em;
+    margin-top: -3em;
+  }
+  h1.slogan {
+    margin-bottom: 0em;
+  }
+  div.burger-menu {
+    height: 2rem;
+    margin-top: 4rem;
+  }
+  img.heroDoodle {
+    width: 70%;
+    margin-bottom: 0rem;
+  }
+  .description {
+    margin-top: -25px;
+  }
+  section.home-categories {
+    margin-bottom: 50px;
+  }
+  div.category-text {
+    width: 500px;
+  }
+  .login-card div.form {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .app {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .info-title {
+    padding-top: 4em;
+  }
+  div.hero {
+    padding-top: 8rem;
+  }
+  img.heroDoodle {
+    width: 70%;
+  }
+  div.logo {
+    float: left;
+    margin-top: -1em;
+  }
+  li.item {
+    margin-bottom: -1rem;
+  }
+  section.sign-up-card.container {
+    flex-wrap: wrap;
+    margin-left: 20%;
+  }
+  .login-btn {
+    position: absolute;
+    left: 15vh;
+    bottom: 8vh;
+  }
+  div.col-1 {
+    margin-top: 18vh;
+  }
+}
+@media screen and (min-width: 1400px) {
+  main {
+    padding-bottom: 50px;
+  }
+  img.heroDoodle {
+    margin: -5rem 0;
+  }
+}

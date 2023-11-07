@@ -1,72 +1,76 @@
-import React, { useState, useEffect } from "react";
-import { render } from 'react-dom';
-import Logo from '../logo_blk.png'
-import '../css/burger.css'
+//This component is the Navigation Bar (Nav) knwown as burger in css
 
-/*
-const Toggle = () => {
-  var burgerMenu = document.getElementsByClassName('burger-menu');
-  var overlay = document.getElementsByClassName('menu');
-  
-  burgerMenu.classList.toggle("close");
-  overlay.classList.toggle("overlay");
-};
-*/
+//Dependencies
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+//Images
+import Logo from "../logo_blk.png";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Nav = () => {
-  
-  
-  function toggleMenu() {
-    window.alert('hello');
-  }
-  
-  const [menu] = useState([
-  {
-    name: "Home",
-    ref: "http://localhost:3000/"
-  },
-  {
-    name: "About us",
-    ref: "http://localhost:3000/"
-  },
-  {
-    name: "FAQ",
-    ref: "http://localhost:3000/"
-  },
-  // login conditional
-  [{
-    name: "Login",
-    ref: "http://localhost:3000/"
-  },
-  {
-    name: "Logout",
-    ref: "http://localhost:3000/"
-  }]
-  ])
-  
-  function sayName(name) {
-    window.alert(name)
-  }
-
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header>
-      <div className='logo'>
-        <img  src={Logo} alt="Coqui Arts logo"></img>
-        </div>
-
-      <button className="burger-menu">
-        <span></span>
-      </button>
-
-      <div className="menu">
+      <div className="logo">
+        <Link exact to="/">
+          <img src={Logo} alt="Coqui Arts logo"></img>
+        </Link>
+      </div>
+      {/* Burger menu closed */}
+      <div className="b-menu">
+        <button
+          className="burger-menu"
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}
+        >
+          <span></span>
+        </button>
+      </div>
+      {/* Burger menu open */}
+      <div className={menuOpen ? "overlay" : "menu"}>
+        <CloseIcon
+          style={{
+            color: "white",
+            position: "absolute",
+            right: "3em",
+            top: "1.5em",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}></CloseIcon>
         <ul>
-  
-          {menu.map = category => {
-          <li onClick={()=> sayName(category.name)}>
-            <a href={category.ref}>{category.name}</a>
-          </li>
-      }}
+          <Link
+            to="/"
+            onClick={() => {
+              setMenuOpen(!menuOpen);
+            }}>
+            <li>Home</li>
+          </Link>
+          <Link
+            to="/about-us"
+            onClick={() => {
+              setMenuOpen(!menuOpen);
+            }}>
+            <li>About Us</li>
+          </Link>
+          <Link
+            to="/about-us"
+            onClick={() => {
+              setMenuOpen(!menuOpen);
+            }}>
+            <li>FAQ</li>
+          </Link>
+          <Link
+            to="/login"
+            onClick={() => {
+              setMenuOpen(!menuOpen);
+            }}>
+            <li>Login</li>
+          </Link>
         </ul>
       </div>
     </header>

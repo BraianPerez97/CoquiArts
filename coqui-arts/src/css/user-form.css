@@ -1,0 +1,11 @@
+.user-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vh;
+}
+
+.user-form input {
+    padding: 1em 2em;
+    margin-bottom: 2em;
+}

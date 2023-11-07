@@ -1,14 +1,21 @@
 
-@import "./css/burger.css";
 @import "./css/rootValues.css";
-@import "./css/hero.css";
 @import "./css/responsive.css";
+@import "./css/burger.css";
+@import "./css/hero.css";
 @import "./css/categories.css";
 @import './css/hdit.css';
 @import "./css/footer.css";
-@import "./css/searchBar.css";
+@import "./css/policies.css";
+@import "./css/about.css";
 @import "./css/login.css";
 @import "./css/sign-up.css";
+@import "./css/welcome.css";
+@import "./css/user-form.css";
+/*@import "./css/searchBar.css";*/
+/*@import './css/carousel.css';*/
+/*@import '../css/userCarousel.css';*/
+@import "./css/userProfile.css";
 
 main {
 	margin: 0 auto;
@@ -87,7 +94,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 header {
@@ -97,6 +104,9 @@ header {
 
 header a {
   color: var(--black);
+}
+.error {
+  border-color: var(--error);
 }
 
 button {
@@ -158,7 +168,7 @@ nav  li {
 textarea {
 	width: 600px;
 	height: 120px;
-	border: 3px solid #cccccc;
+	border: 3px solid var(--white);
 	padding: 5px;
 }
 
@@ -266,8 +276,6 @@ textarea {
 }
 
 button {
-	background: var(--white);
-	border: 0;
 	border-radius: 5px;
 	color: var(--black);
 	cursor: pointer;

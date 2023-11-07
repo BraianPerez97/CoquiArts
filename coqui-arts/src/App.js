@@ -1,38 +1,64 @@
-//import logo from './logo_blk.png';
-import './App.css';
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Categories from './components/Categories';
-import HDIW from './components/HDIW'
-import Footer from './components/Footer';
-//import ListCategory from './components/ListCategory';
-//import SearchBar from './components/SearchBar';
-//import Login from './pages/Login';
-import Sign from './pages/Sign-up';
+//Dependecies
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-/*let products = [
-  'apples', 'bananas', 'grapefruit', 'kiwi', 'avocados', 
-  'lettuce', 'tomatimport { BrowserRouter, Route, Switch } from 'react-router-dom';oes', 'cheese', 'bread', 'yogurt', 
-  'peas', 'carrots', 'broccoli', 'beans', 'pizza',
-  'pasta', 'rice', 'cereal', 'butter', 'milk',
-  'eggs', 'onions', 'garlic', 'honey', 'soup',
-  'salt', 'pepper', 'oregano', 'basil', 'paprika'
-<SearchBar  products={products} ></SearchBar>
-<ListCategory></ListCategory>
-];*/
+//CSS
+import "./App.css";
+
+//Components
+import Nav from "./components/Nav";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import FAQ from "./pages/FAQ";
+import Login from "./pages/Login";
+import UserGallery from "./components/UserGallery";
+
+import Sign from './pages/Sign-up';
+import WelcomeCard from "./components/WelcomeCard";
+import InfoCards from "./components/InfoCards";
+import NameForm from "./pages/EditCard";
+import UserProfile from "./components/UserProfile";
+
+import Terms from "./pages/Policies/Terms";
+import Usage from "./pages/Policies/Usage";
+import Privacy from "./pages/Policies/Privacy";
+
 
 function App() {
   return (
     <div className="App">
       <Nav></Nav>
        <main>
-        <Sign></Sign>
+
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+
+        <Route path="/:category" element={<UserGallery></UserGallery>}></Route>
+
+        <Route path="/user/:id" element={<UserProfile />}></Route>
+
+        <Route path="/login" element={<Login />}></Route>
+
+        <Route path='/sign-up' element={<Sign />}></Route>
+
+        <Route path="/sign-up/welcome" element={<WelcomeCard />}></Route>
+
+        <Route path="/sign-up/welcome/tips" element={<InfoCards />}></Route>
+
+        <Route path="/edit-profile" element={<NameForm/>}></Route>
+
+        <Route path='/about-us' element={<About />}></Route>
+
+         <Route path='/faq' element={<FAQ />}></Route>
+
+        <Route path="/terms" element={<Terms/>}></Route>
         
-        <Hero></Hero>
-        <Categories></Categories>
-        <HDIW></HDIW>
-      </main>
-      <Footer></Footer>
+        <Route path="/usage" element={<Usage />}></Route>
+        
+        <Route path="/privacy" element={<Privacy/>}></Route>
+      </Routes>
+
+       </main>
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+//Image
 import Background from "../assets/login/Spy.png";
 
 const Login = () => {
@@ -6,16 +8,20 @@ const Login = () => {
     <section className="login-card container container2">
       <img
         src={Background}
-        alt="an doodle of a ghost "
+        alt="a doodle of a ghost "
         className="background-img"
       ></img>
 
       <div className="form">
         <form>
-           <h1 className="card-title">Are you <span>registered?</span></h1>
-           
-            <input type="email" className="form-control" placeholder="Email" />
-     
+          <h1 className="card-title1">
+            Are you <span>registered?</span>
+          </h1>
+          <p className="card-p">Let’s check those credentials</p>
+
+          {/* Form Section */}
+          <input type="email" className="form-control" placeholder="Email" />
+
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -29,24 +35,26 @@ const Login = () => {
             />
           </div>
 
+          {/* Buttons Section */}
           <button type="button" className="btn btn-login">
-            LOGIN
+            LET ME IN!
           </button>
 
           <div className="message">
             <div>
               <input id="rem-check" type="checkbox" /> Remember Me
             </div>
-            <div>
-              <a href="#">Forgot your password?</a>
-            </div>
+            <div>Forgot your password?</div>
           </div>
 
           <div className="sign-up">
+            {/* Sign-up Section */}
             <p>Don't have an account?</p>
-          <button type="button" className="btn btn-small">
-            Create one
-          </button>
+            <Link exact to="/sign-up">
+              <button type="button" className="btn btn-small">
+                Create one
+              </button>
+            </Link>
           </div>
         </form>
       </div>

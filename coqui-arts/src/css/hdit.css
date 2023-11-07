@@ -1,55 +1,58 @@
+/*--------How Does It Work / How Works(HW) Section----------*/
 .HW-title {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 .HW-title span {
-    font-family:var(--secondary);
-    font-size: 4rem;
-    padding-left: 10px;
-    font-weight: 800;
-}
-.infoGraphics {
-    height: 20rem;
-    margin: 3rem 1rem;
-}
-.photo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.photo-text {
-    width: 20rem;
-    display: flex;
-    flex-direction: column;
-    font-size: 3rem;
-    font-weight: 400;
-}
-.photo-text h3 {
-    font-family: var(--secondary);
-    font-weight: bolder;
+  font-family: var(--secondary);
+  font-size: 4rem;
+  padding-left: 10px;
+  font-weight: 800;
 }
 
+/*Images*/
+.infoGraphics {
+  height: 20rem;
+  margin: 3rem 1rem;
+}
+.photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.photo-text {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 3rem;
+  font-weight: 400;
+}
+.photo-text h3 {
+  font-family: var(--secondary);
+  font-weight: bolder;
+}
 div.photo-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 #browse {
-   margin-top: 5rem;
+  margin-top: 5rem;
 }
-  /* Hero btn animation */
-  .button-2 {
-    border: 3px solid var(--lime);
-    background-color: var(--lime);
-    border-radius: 2em;
-    color: var(--white);
-    transition: .3s;
-    padding: .3rem .9rem;
+/* Hero btn animation */
+.button-2 {
+  border: 3px solid var(--lime);
+  background-color: var(--lime);
+  border-radius: 2em;
+  color: var(--white);
+  transition: 0.3s;
+  padding: 0.3rem 0.9rem;
 }
 .button-2:hover {
-    background-color: transparent;
-    color: var(--lime);
-    box-shadow: 8px 8px var(--lime);
-    transition: .3s;
-  }
+  background-color: transparent;
+  color: var(--lime);
+  box-shadow: 8px 8px var(--lime);
+  transition: 0.3s;
+}
