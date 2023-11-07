@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import "./App.css";
 import Nav from "./components/Nav";
-
 import Login from "./pages/Login";
 import Sign from './pages/Sign-up';
 import WelcomeCard from "./components/WelcomeCard";
@@ -13,25 +11,26 @@ import Terms from "./pages/Policies/Terms";
 import Conditions from "./pages/Policies/Conditions";
 import Privacy from "./pages/Policies/Privacy";
 import Home from "./pages/Home";
-
-
-/*let products = [
-  'apples', 'bananas', 'grapefruit', 'kiwi', 'avocados', 
-  'lettuce', 'tomatimport { BrowserRouter, Route, Switch } from 'react-router-dom';oes', 'cheese', 'bread', 'yogurt', 
-  'peas', 'carrots', 'broccoli', 'beans', 'pizza',
-  'pasta', 'rice', 'cereal', 'butter', 'milk',
-  'eggs', 'onions', 'garlic', 'honey', 'soup',
-  'salt', 'pepper', 'oregano', 'basil', 'paprika'
-<SearchBar  products={products} ></SearchBar>
-<ListCategory></ListCategory>
-];*/
+import axios from 'axios';
 
 
 function App() {
+  const [fetchData, setFetchedData] = useState(null);
+
+  useEffect(() => {
+    axios.get('https://localhost:3000')
+      .then(response => {
+        setFetchedData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
   return (
     <div className="App">
       <Nav></Nav>
-       <main>
+      <main>
 
       <Routes>
         <Route path="/" element={<Home/>}></Route>
@@ -52,7 +51,7 @@ function App() {
         <Route path="/privacy" element={<Privacy/>}></Route>
       </Routes>
 
-       </main>
+      </main>
     </div>
   );
 }

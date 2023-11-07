@@ -11,7 +11,6 @@ const app = express();
 // Set the port to the environment variable PORT or 5001 if not defined
 const PORT = process.env.PORT || 5001;
 
-<<<<<<< HEAD
 // Define and import models
 const models = {
   User: require('./models/User'), // Pass your Sequelize instance
@@ -19,10 +18,8 @@ const models = {
 };
 
 // Set up middleware to parse JSON and URL-encoded data
-=======
 const bodyParser = require('body-parser');
 
->>>>>>> 5986e0b9c6348e51859137f9eeb7b0b29f1805a9
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
