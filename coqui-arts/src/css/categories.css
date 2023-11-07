@@ -2,7 +2,6 @@ img.category-img {
   height: 8rem;
   margin-left: -1.5rem;
 }
-
 .category-title {
   font-size: 1.5rem;
 }
@@ -15,7 +14,9 @@ img.category-img {
   flex-direction: column;
   justify-content: center;
   margin-left: -1rem;
+  color: var(--black);
 }
+
 .item {
   display: flex;
   flex-direction: row;
@@ -26,6 +27,7 @@ img.category-img {
   list-style: none;
   justify-content: space-around;
 }
+
 section.home-categories {
   margin-top: 5rem;
   position: relative;
@@ -33,19 +35,10 @@ section.home-categories {
   width: 100%;
 }
 
-
-
+/*-----OPEN LIST------*/
 ul.categories-list.hs.full {
-    scrollbar-color: transparent;
+  scrollbar-color: transparent;
 }
-
-/* Demo styles */
-
-html,
-body {
-  height: 100%;
-}
-
 
 ul {
   list-style: none;
@@ -70,4 +63,3 @@ ul {
 
   border-radius: 8px;
 }
-

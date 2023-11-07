@@ -1,0 +1,48 @@
+.policies {
+  color: var(--aqua);
+}
+.Terms p {
+  text-align: left;
+  font-weight: 400;
+  display: flex;
+  justify-content: left;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 5em;
+}
+.title {
+  padding-top: 10rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+.Terms h3,
+.Privacy h3 {
+  margin: 2rem;
+  font-family: var(--secondary);
+}
+.rich-text-block-4 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+}
+div.sticky {
+  position: -web-sticky;
+  position: fixed;
+  bottom: 0;
+  right: 1em;
+  background-color: var(--blue);
+  border-radius: 20px 20px 0 0;
+  padding-top: 10px;
+}
+ol li {
+  line-height: 2;
+}
+.contact-line {
+  color: var(--black);
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+}

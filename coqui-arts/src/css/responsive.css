@@ -4,7 +4,6 @@
     padding: 0;
     font-size: 0.5rem;
   }
- 
 }
 @media screen and (min-width: 300px) {
   div.logo {
@@ -12,8 +11,8 @@
   }
   .info-title {
     padding-top: 1em;
-  } 
-  
+  }
+
   img#category-img {
     height: 11rem;
     margin-left: 0;
@@ -54,7 +53,7 @@
   .hero {
     margin-top: 1rem;
   }
-  
+
   h4.category-title {
     font-size: 1rem;
   }
@@ -74,7 +73,8 @@
   h1.HW-title span {
     font-size: 3rem;
   }
-  h1.card-title.info-title, h1.card-title.info-title span {
+  h1.card-title.info-title,
+  h1.card-title.info-title span {
     font-size: 2rem;
   }
   span.info-sub {
@@ -114,9 +114,8 @@
     font-size: 1rem;
   }
   .w-title h1.card-title2 {
-
-  margin-top: 70vh;
-  font-size: 3rem;
+    margin-top: 70vh;
+    font-size: 3rem;
   }
   .w-title img {
     height: 5em;
@@ -124,15 +123,15 @@
   .w-title .card-p {
     margin-top: 2em;
   }
-    .w-title h1.card-title2 {
+  .w-title h1.card-title2 {
     margin-top: 20vh;
     font-size: 2rem;
-    margin-bottom: -.5em;
+    margin-bottom: -0.5em;
   }
   img#logotype {
     height: 8em;
   }
-  .card-p{
+  .card-p {
     margin-top: 1em;
   }
   img.background-img2 {
@@ -172,7 +171,6 @@
     display: flex;
     justify-content: flex-end;
   }
-  
 }
 @media screen and (max-width: 1000px) {
   .app {
@@ -206,7 +204,7 @@
     left: 15vh;
     bottom: 8vh;
   }
-   div.col-1{
+  div.col-1 {
     margin-top: 18vh;
   }
 }

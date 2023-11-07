@@ -1,18 +1,19 @@
+//This component is the section 'How Does It Works' (HDIW) of the app in home
+
+//Dependencies
 import React, { useState } from "react";
-import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+//import ListSubheader from "@mui/material/ListSubheader";
+//import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 export default function NestedList() {
   const [open, setOpen] = useState(false);
 
-  /* ======================
-        LIST OPTIONS 
-  ========================*/
+  // Categories list options
   const [categories] = useState([
     {
       name: "Photography",
@@ -47,6 +48,7 @@ export default function NestedList() {
 
   return (
     <List
+      /* Styling to overwrite global style from mui */
       sx={{
         left: "26%",
         width: "70%",

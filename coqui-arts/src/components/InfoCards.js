@@ -1,6 +1,8 @@
+//This component is the Profile Tips section of the app after sign-up and welcome
+
 //Dependencies
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import ThreePIcon from "@mui/icons-material/ThreeP";
 import TaskIcon from "@mui/icons-material/Task";
 import FaceRetouchingNaturalIcon from "@mui/icons-material/FaceRetouchingNatural";
@@ -9,70 +11,67 @@ import AddLinkIcon from "@mui/icons-material/AddLink";
 //Images
 
 export const InfoCards = () => {
-  /* ======================
-        INFO CARDS 
-  ========================*/
-  const categories = [
+  //Tips array
+  const tips = [
     {
       photo: ThreePIcon,
-      name: "First impression",
+      name: "First Impressions Matter",
       description:
-        "Take your time in curating your profile so you can fit with different opportunities",
+        "Your profile is your digital identity. Invest time in crafting it. Showcase your skills, experience, and personality to make a positive impact on potential clients and land in different opportunities",
     },
     {
       photo: TaskIcon,
-      name: "Be trueful",
+      name: "Be honest",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+        "Describe your work accurately and honestly. It's tempting to exaggerate, but transparency and integrity build trust. Clients value honesty in your skillset and previous work.",
     },
     {
       photo: FaceRetouchingNaturalIcon,
-      name: "Upload photos",
+      name: "Profile Picture",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+        "Your profile picture is your online handshake. Choose a professional image that represents you well. A clear, friendly, and approachable photo can make a big difference.",
     },
     {
       photo: AddLinkIcon,
-      name: "Connect your socials",
+      name: "Connect with the world",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+        " Link your other social media profiles. Show clients your broader online presence, reinforcing your professionalism and expertise.",
     },
   ];
   function categorySelected(name) {
     console.log(`${name}`);
   }
-
-  //JSX | HTML
   return (
     <section className=" container3">
       <div className="form">
         <h1 className="card-title info-title">
-          {" "}
           What makes a good <span>CoquiArts</span> profile?
         </h1>
         <span className="info-sub">
-          First impressions matter. Create a profile that will stand out.
+          Remember, your profile is the key to connecting with clients. A
+          well-crafted profile can open doors to exciting opportunities.
         </span>
 
         <div className="cat">
-          {categories.map((category) => (
+          {tips.map((tip) => (
             <div
               className=" info-item"
-              onClick={() => categorySelected(category.name)}
+              onClick={() => categorySelected(tip.name)}
             >
               <p id="cat-img">
-                <category.photo sx={{ fontSize: "2em" }}> </category.photo>
+                <tip.photo sx={{ fontSize: "2em" }}> </tip.photo>
               </p>
 
-              <h6 className="">{category.name}</h6>
-              <p className="category-description">{category.description}</p>
+              <h6 className="">{tip.name}</h6>
+              <p className="tip-description">{tip.description}</p>
             </div>
           ))}
         </div>
-            <Link exact to='/edit-profile'>
-        <button type="button" className="btn continue next">
-          NEXT
-        </button></Link>
+        <Link exact to="/edit-profile">
+          <button type="button" className="btn continue next">
+            NEXT
+          </button>
+        </Link>
       </div>
     </section>
   );
