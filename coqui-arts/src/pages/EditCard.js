@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+// This is where the user manages its profile (CREATE/EDIT/DELETE) their profile
+import React, { useState } from "react";
 
 function NameForm() {
   const [user, setUser] = useState({
-    profileImage: '',
-    firstName: '',
-    lastName: '',
-    category: '',
-    email: '',
-    phone: '',
+    profileImage: "",
+    firstName: "",
+    lastName: "",
+    category: "",
+    email: "",
+    phone: "",
     skills: [],
-    description: '',
+    description: "",
     topWorks: [null, null, null], // Store URLs of top works images
     socialMedia: [],
   });
@@ -23,7 +24,7 @@ function NameForm() {
   };
 
   const handleKeywordsChange = (e) => {
-    const keywords = e.target.value.split(',').map((keyword) => keyword.trim());
+    const keywords = e.target.value.split(",").map((keyword) => keyword.trim());
     setUser({
       ...user,
       keywords,
@@ -35,43 +36,53 @@ function NameForm() {
     // You may want to use a file upload component or library for this
     // Update the topWorks state with the uploaded image URL at the specified index
   };
+  const inputs = [
+    {
+      type: "text",
+      name: "firstName",
+      placeholder: "First Name",
+      value: user.firstName,
+    },
+     {
+      type: "text",
+      name: "lastName",
+      placeholder: "Last Name",
+      value: user.lastName,
+    },
+     {
+      type: "number",
+      name: "phone",
+      placeholder: "Phone",
+      value: user.phone,
+    },
+    {
+      type: "text",
+      name: "skills",
+      placeholder: "Skills (comma-separated)",
+      value: user.skills.join(', '),
+    },
+
+  ];
 
   return (
-    <section className='user-form'>
+    <section className="user-form">
       <h1>User Profile</h1>
       <input
         type="file"
         name="profileImage"
         onChange={(e) => handleTopWorkImageUpload(e, 0)}
       />
+
+      {/* Inputs Map */}
+      {inputs.map(input =>
       <input
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        value={user.firstName}
+        type={input.type}
+        name={input.name}
+        placeholder={input.placeholder}
+        value={input.value}
         onChange={handleInputChange}
       />
-      <input
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-        value={user.lastName}
-        onChange={handleInputChange}
-      />
-      <input
-        type="number"
-        name="phone"
-        placeholder="Phone"
-        value={user.phone}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        name="skills"
-        placeholder="Skills (comma-separated)"
-        value={user.skills.join(', ')}
-        onChange={handleKeywordsChange}
-      />
+      )}
   
       <textarea
         name="description"
@@ -80,6 +91,7 @@ function NameForm() {
         onChange={handleInputChange}
       />
       <div>
+
         <h2>Top Works</h2>
         <input
           type="file"
@@ -97,6 +109,7 @@ function NameForm() {
           onChange={(e) => handleTopWorkImageUpload(e, 3)}
         />
       </div>
+      
       <input
         type="text"
         name="socialMedia"
@@ -104,10 +117,10 @@ function NameForm() {
         value={user.socialMedia}
         onChange={handleInputChange}
       />
-     
-          <button type="button" className="btn btn-login">
-            DONE!
-          </button>
+
+      <button type="button" className="btn btn-login">
+        DONE!
+      </button>
     </section>
   );
 }

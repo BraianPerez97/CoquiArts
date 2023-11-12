@@ -1,41 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 //Image
 import Background from "../assets/login/Ghost.png";
 
 const Sign = () => {
-  const [newUser, setUser] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    emailError: false,
-    passwordError: false,
-  });
-
-  useEffect(() => {
-    axios
-      .post("/user", {
-        email: newUser.email,
-        passwd: newUser.password,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [newUser.email, newUser.password]);
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...newUser,
-      [name]: value,
-      emailError: name === "email" && !value.includes("@"),
-      passwordError: name === "confirmPassword" && value !== newUser.password,
-    });
+    console.log('hello')
   };
+ 
+   const handleSignup = async (event) => {
+    event.preventDefault();
+
+    if (password && confirmPassword) {
+       console.log('hi!');
+    }
+  };
+
   return (
     <section className="sign-up-card container">
       <div className="side-card col-1">
@@ -51,7 +36,7 @@ const Sign = () => {
       ></img>
 
       <div className="form col-2">
-        <form>
+        <form onSubmit={handleSignup}>
           <h1 className="card-title">
             Let's get you <span>discovered</span>
           </h1>
@@ -59,10 +44,11 @@ const Sign = () => {
           <input
             type="email"
             name="email"
-            className={`form-control ${newUser.emailError ? "error" : ""}`}
+            className={'form-control'}
             placeholder="Email"
-            value={newUser.email}
-            onChange={handleInputChange}
+            id="email-signup" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <div className="input-group mb-3">
@@ -74,25 +60,24 @@ const Sign = () => {
             <input
               type="password"
               name="password"
-              className={`form-control ${newUser.passwordError ? "error" : ""}`}
+              id="password-signup" 
+              className={'form-control'}
               placeholder="Password"
-              value={newUser.password}
-              onChange={handleInputChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <input
               type="password"
               name="confirmPassword"
-              className={`form-control ${newUser.passwordError ? "error" : ""}`}
+              className={`form-control`}
               placeholder="Confirm password"
-              value={newUser.confirmPassword}
-              onChange={handleInputChange}
             />
           </div>
-          <Link exact to="/sign-up/welcome">
-            <button type="button" className="btn btn-login">
+         
+            <button type="submit" className="btn btn-login" >
               I'M READY
             </button>
-          </Link>
+    
         </form>
       </div>
       <div className="login-btn">
