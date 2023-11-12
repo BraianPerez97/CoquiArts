@@ -1,6 +1,10 @@
 const express = require('express');
 const router = require('express').Router();
+const cors = require('cors');
 const { Category } = require('../../models');
+
+
+router.use(cors()); 
 
 // Middleware to parse JSON data from the request body
 router.use(express.json());

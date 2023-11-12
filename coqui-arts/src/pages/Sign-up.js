@@ -1,25 +1,67 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 //Image
 import Background from "../assets/login/Ghost.png";
 
 const Sign = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  
-  const handleInputChange = (e) => {
-    console.log('hello')
-  };
- 
-   const handleSignup = async (event) => {
-    event.preventDefault();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-    if (password && confirmPassword) {
-       console.log('hi!');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const navigate = useNavigate();
+
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
+  }
+
+  function handleConfirmPasswordChange(e) {
+    setConfirmPassword(e.target.value);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // Reset errors
+    setEmailError(false);
+    setPasswordError(false);
+    setConfirmPasswordError(false);
+
+    // Validate email
+    if (!email.includes("@")) {
+      setEmailError(true);
     }
-  };
+
+    // Validate password length
+    if (password.length < 8) {
+      setPasswordError(true);
+    }
+
+    // Validate confirm password
+    if (password !== confirmPassword) {
+      setConfirmPasswordError(true);
+    }
+
+    // If valid, submit form
+    if (!emailError && !passwordError && !confirmPasswordError) {
+      // create user session after validation
+      sessionStorage.setItem(
+        "signup",
+        JSON.stringify({
+          email,
+          password,
+        })
+      );
+
+      navigate("/sign-up/welcome");
+    }
+  }
 
   return (
     <section className="sign-up-card container">
@@ -36,7 +78,7 @@ const Sign = () => {
       ></img>
 
       <div className="form col-2">
-        <form onSubmit={handleSignup}>
+        <form onSubmit={handleSubmit}>
           <h1 className="card-title">
             Let's get you <span>discovered</span>
           </h1>
@@ -44,11 +86,13 @@ const Sign = () => {
           <input
             type="email"
             name="email"
-            className={'form-control'}
             placeholder="Email"
-            id="email-signup" 
+            onChange={handleEmailChange}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            className={
+              emailError ? "form-control error-border" : "form-control"
+            }
+            id="email-signup"
           />
 
           <div className="input-group mb-3">
@@ -57,27 +101,34 @@ const Sign = () => {
                 <i class="fa fa-lock"></i>
               </span>
             </div>
+
             <input
               type="password"
               name="password"
-              id="password-signup" 
-              className={'form-control'}
+              id="password-signup"
+              onChange={handlePasswordChange}
+              className={
+                passwordError ? "form-control error-border" : "form-control"
+              }
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
             <input
               type="password"
-              name="confirmPassword"
-              className={`form-control`}
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+              className={
+                confirmPasswordError
+                  ? "form-control error-border"
+                  : "form-control"
+              }
               placeholder="Confirm password"
             />
           </div>
-         
-            <button type="submit" className="btn btn-login" >
-              I'M READY
-            </button>
-    
+
+          <button type="submit" className="btn btn-login">
+            I'M READY
+          </button>
         </form>
       </div>
       <div className="login-btn">

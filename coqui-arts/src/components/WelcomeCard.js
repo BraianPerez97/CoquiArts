@@ -10,6 +10,16 @@ import ListCategory from "./ListCategory";
 import LogoType from "../assets/logos/LogoType.png";
 
 const Welcome = () => {
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
+
+  useEffect(() => {
+    // Get signup data from sessionStorage
+    const signupData = JSON.parse(sessionStorage.getItem('signup'));  
+    const {email, password} = signupData;
+
+    // Save email and password to state or local variables 
+  }, []);
   return (
     <section className="login-card container container3">
       <div className="form">

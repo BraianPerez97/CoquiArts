@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const fs = require('fs');
+const cors = require('cors');
+
+router.use(cors()); 
 
 router.post('/update-profile', async (req, res) => {
 try {

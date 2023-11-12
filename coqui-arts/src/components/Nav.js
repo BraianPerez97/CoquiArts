@@ -23,7 +23,7 @@ const Nav = () => {
   return (
     <header>
       <div className="logo">
-        <Link exact to="/">
+        <Link to="/">
           <img src={Logo} alt="Coqui Arts logo"></img>
         </Link>
       </div>
