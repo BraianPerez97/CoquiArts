@@ -1,39 +1,81 @@
-// This component is the user profile card
+import React, { useState } from 'react';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import SendIcon from '@mui/icons-material/Send';
 
-//Dependencies
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import tester from '../assets/tester.jpg'
+export default function RecipeReviewCard() {
+  const [expanded, setExpanded] = useState(false);
 
-function UserProfile({ match }) {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const userId = match.params.id;
-
-    axios
-      .get(`http://localhost:5001/api/user/${userId}`)
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [match.params.id]);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
-    <div>
-      {user ? (
-        <div>
-          <h1>User Profile</h1>
-          <p>Name: {user.first_name} {user.last_name}</p>
-          <p>Email: {user.email}</p>
-          {/* Add more user information here*/}
-        </div>
-      ) : (
-        <div>Loading...</div>
-      )}
-    </div>
+    /* Imported  Carousel. Needs to map users and display their info, be Refractored
+      Benefits: We don't need a user carousel AND a user profile page, this covers both by expanding*/
+    <Card style={{ maxWidth: 345 }}>
+      <CardHeader
+        avatar={
+          <Avatar style={{ backgroundColor: red[500] }} aria-label="recipe">
+            R
+          </Avatar>
+        }
+     
+      />
+        <Typography variant='body2' color='text.secondary'>Username</Typography>
+      <CardMedia
+        component="img"
+        height="194"
+        image={tester}
+        alt="user image"
+      />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary user-description">
+          Lorem ipsum.
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+     
+           <div id="button-4" class="button">
+             <div id="underline"></div>
+             Contact me<img alt='' id="arrow-hover" src={SendIcon} /></div>
+     
+        <IconButton
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>description</Typography>
+          <Typography paragraph>
+            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.
+          </Typography>
+          <Typography paragraph>
+            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+          </Typography>
+          <Typography paragraph>
+            Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook again without stirring, until mussels have opened and rice is just tender, 5 to 7 minutes more. (Discard any mussels that don't open.)
+          </Typography>
+          <Typography>
+            Set aside off the heat to let rest for 10 minutes, and then serve.
+          </Typography>
+        </CardContent>
+      </Collapse>
+    </Card>
   );
 }
-
-export default UserProfile;

@@ -1,15 +1,24 @@
 //This component is the Navigation Bar (Nav) knwown as burger in css
+//needs to manage inital state of menu (how its display now) and change 'login button' to logout and 'my profile' if user it's logged
 
 //Dependencies
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //Images
 import Logo from "../logo_blk.png";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Nav = () => {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+  // Remove the token from localStorage | Purpose: take JWT of user and send to back (bcrypt on the back)
+  localStorage.removeItem('token');
+  // Redirect to the login page
+  navigate('/login');
+};
 
   return (
     <header>
