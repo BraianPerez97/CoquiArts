@@ -1,5 +1,8 @@
 const router = require('express').Router();
+const cors = require('cors');
 const { User } = require('../../models');
+
+router.use(cors()); 
 
 // GET /user
 router.get('/', (req, res) => {

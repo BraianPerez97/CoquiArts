@@ -1,5 +1,5 @@
 //Dependecies
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Routes, Route } from "react-router-dom";
 
 //CSS
@@ -22,9 +22,23 @@ import UserProfile from "./components/UserProfile";
 import Terms from "./pages/Policies/Terms";
 import Usage from "./pages/Policies/Usage";
 import Privacy from "./pages/Policies/Privacy";
-
+import axios from "axios";
 
 function App() {
+  const [users, setUsers] = useState([]); 
+
+ useEffect(() => {
+    //Bring user by categories
+    axios
+      .get("http://localhost:5001/api/user")
+      .then((response) => {
+        setUsers([...response.data]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div className="App">
       <Nav></Nav>
@@ -33,7 +47,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
 
-        <Route path="/:category" element={<UserGallery></UserGallery>}></Route>
+        <Route path="/:category" element={<UserProfile users={users} />}></Route>
 
         <Route path="/user/:id" element={<UserProfile />}></Route>
 

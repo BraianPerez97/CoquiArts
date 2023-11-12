@@ -23,10 +23,10 @@ function UserGallery() {
       });
   }, []);
 
-  useEffect(() => {
+  useEffect((userId) => {
     //Bring user selected
     axios
-      .get("http://localhost:5001/api/user/${userId}")
+      .get(`http://localhost:5001/api/user/${userId}`)
       .then((response) => {
         setUsers(response.data);
       })
