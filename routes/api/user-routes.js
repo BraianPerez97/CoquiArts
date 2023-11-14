@@ -96,7 +96,8 @@ router.post('/login', async (req, res) => {
     req.session.username = user.first_name;
     req.session.loggedIn = true;
 
-    res.json({ user, message: "Welcome back!" });
+    res.json({  user: req.session.user, 
+    sessionToken: req.session.id, message: "Welcome back!" });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -106,7 +107,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(200).end();
     });
   } else {
     res.status(404).end(); // 404 or any other appropriate status code

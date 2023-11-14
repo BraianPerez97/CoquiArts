@@ -4,46 +4,67 @@
 import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+import ListItem from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 //import ListSubheader from "@mui/material/ListSubheader";
 //import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-export default function NestedList() {
-  const [open, setOpen] = useState(false);
-
+export default function ListCategory({ currentCategory, users }) {
+  
   // Categories list options
-  const [categories] = useState([
+  const [categories, setCategories] = useState([
     {
       name: "Photography",
+      open: currentCategory === "Photography",
     },
     {
       name: "Graphic Design & Illustrations",
+      open: currentCategory === "Graphic Design & Illustrations",
     },
     {
       name: "Music & Jingles",
+      open: currentCategory === "Music & Jingles",
     },
     {
-      name: "Bakegoods",
+      name: "Bakedgoods",
+      open: currentCategory === "Bakedgoods",
     },
     {
       name: "Mural & Graffiti",
+      open: currentCategory === "Mural & Graffiti",
     },
     {
       name: "Strategy & Management for Social Media",
+      open: currentCategory === "Strategy & Management for Social Media",
     },
     {
       name: "Events Services",
+      open: currentCategory === "Event Services",
     },
     {
       name: "Other",
+      open: currentCategory === "Other",
     },
   ]);
+  const [open, setOpen] = useState(false);
 
-  const handleClick = (name) => {
+  // Track selected category index
+  const [selected, setSelected] = useState();
+
+  const handleMenuClick = () => {
     setOpen(!open);
-    console.log(name);
+  };
+
+  const handleToggle = (index) => {
+    setSelected(index)
+    setCategories((prevCategories) => {
+      const newCategories = [...prevCategories];
+      newCategories[index].open = !newCategories[index].open;
+      console.log(index);
+      handleMenuClick(index);
+      return newCategories;
+    });
   };
 
   return (
@@ -65,20 +86,33 @@ export default function NestedList() {
         },
       }}
     >
-      <ListItemButton onClick={() => handleClick(categories.name)}>
-        <ListItemText primary="--" />
-        <ExpandMoreIcon></ExpandMoreIcon>
+      <ListItemButton onClick={handleMenuClick}>
+        <ListItem primary={categories[selected]?.name || "--" } />
+        <ExpandMoreIcon />
       </ListItemButton>
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {categories.map((category) => {
-            return (
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary={category.name} />
-              </ListItemButton>
-            );
-          })}
+          {categories.map((category, index) => (
+            <ListItemButton
+             
+              sx={{
+                pl: 4,
+                backgroundColor:
+                  category.name === currentCategory
+                    ? "rgba(0, 0, 0, 0.1)"
+                    : "transparent",
+              }}
+            >
+             <ListItem
+        key={index}
+        onClick={() => handleToggle(index)}
+        selected={index === selected}
+        primary={category.name}
+      >
+      </ListItem>  
+            </ListItemButton>
+          ))}
         </List>
       </Collapse>
     </List>

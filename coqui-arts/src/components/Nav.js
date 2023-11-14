@@ -2,23 +2,33 @@
 //needs to manage inital state of menu (how its display now) and change 'login button' to logout and 'my profile' if user it's logged
 
 //Dependencies
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AuthService from "../utils/auth";
 
 //Images
 import Logo from "../logo_blk.png";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Nav = () => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleLogout = () => {
-  // Remove the token from localStorage | Purpose: take JWT of user and send to back (bcrypt on the back)
-  localStorage.removeItem('token');
-  // Redirect to the login page
-  navigate('/login');
-};
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      const isLoggedIn = await AuthService.isLoggedIn();
+      setLoggedIn(isLoggedIn);
+    };
+
+    checkLoggedIn();
+  }, []);
+
+  const handleLogout = async () => {
+    await AuthService.logout();
+    setLoggedIn(false);
+    navigate('/')
+  };
 
   return (
     <header>
@@ -50,36 +60,52 @@ const Nav = () => {
           }}
           onClick={() => {
             setMenuOpen(!menuOpen);
-          }}></CloseIcon>
+          }}
+        ></CloseIcon>
         <ul>
           <Link
             to="/"
             onClick={() => {
               setMenuOpen(!menuOpen);
-            }}>
+            }}
+          >
             <li>Home</li>
           </Link>
           <Link
             to="/about-us"
             onClick={() => {
               setMenuOpen(!menuOpen);
-            }}>
+            }}
+          >
             <li>About Us</li>
           </Link>
           <Link
             to="/about-us"
             onClick={() => {
               setMenuOpen(!menuOpen);
-            }}>
+            }}
+          >
             <li>FAQ</li>
           </Link>
-          <Link
-            to="/login"
-            onClick={() => {
-              setMenuOpen(!menuOpen);
-            }}>
-            <li>Login</li>
-          </Link>
+          {loggedIn ? (
+            <>
+              <Link
+                to="/my-profile"
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                <li>My Profile</li>
+              </Link>
+              <li onClick={handleLogout}>Logout</li>
+            </>
+          ) : (
+            <Link
+              to="/login"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <li>Login</li>
+            </Link>
+          )}
+         
         </ul>
       </div>
     </header>
