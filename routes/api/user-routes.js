@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const cors = require('cors');
+const { User, Category } = require('../../models');
+
+router.use(cors());
 
 // GET /user
 router.get('/', (req, res) => {
-  console.log(req.session);
-  // Access our User model and get all users
   User.findAll()
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -15,9 +16,8 @@ router.get('/', (req, res) => {
 
 // GET /user/?
 router.get('/:id', (req, res) => {
-  // Access model and get user by id
   User.findOne({
-    attributes: { exclude: ["passwd"] }, // Exclude password from the response
+    attributes: { exclude: ["passwd"] },
     where: {
       id: req.params.id
     }
@@ -37,11 +37,9 @@ router.get('/:id', (req, res) => {
 
 // GET all users with a specific cat_id
 router.get('/by-category/:cat_id', (req, res) => {
-  const cat_id = req.params.cat_id; // Parse the cat_id from request params
-
   User.findAll({
     where: {
-      cat_id: req.params.cat_id // Use the parsed cat_id
+      cat_id: req.params.cat_id
     }
   })
     .then(dbUserData => {
@@ -54,31 +52,50 @@ router.get('/by-category/:cat_id', (req, res) => {
 });
 
 // POST /user
-router.post('/', (req, res) => {
-  // Expects JSON data in the request body
+router.post('/', async (req, res) => {
   const userData = req.body;
 
-  User.create({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    passwd: req.body.passwd,
-    cat_id: req.body.cat_id
-  })
-    .then(dbUserData => {
-      // Save user session (cookies)
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.first_name;
-        req.session.loggedIn = true;
+  try {
+    let category;
 
-        res.json(dbUserData);
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+    // Check if the provided cat_id exists
+    if (userData.cat_id) {
+      category = await Category.findByPk(userData.cat_id);
+      
+      // If the provided cat_id doesn't exist, create a new category
+      if (!category) {
+        category = await Category.create({
+          name: userData.category_name, // Assuming you send the category name in the request body
+          description: userData.category_description, // Assuming you send the category description in the request body
+        });
+      }
+    }
+
+    // Create the user with the associated category
+    const dbUserData = await User.create({
+      first_name: userData.first_name,
+      last_name: userData.last_name,
+      email: userData.email,
+      passwd: userData.passwd,
+      phone_number: userData.phone_number,
+      skills: userData.skills,
+      description: userData.description,
+      social_media: userData.social_media,
+      images: userData.images,
+      cat_id: category ? category.id : null, // Associate the user with the category
     });
+
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.first_name;
+      req.session.loggedIn = true;
+
+      res.json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // POST /user/login
@@ -88,7 +105,6 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.login(email, passwd);
 
-    // If login is successful, store user information in the session
     req.session.user_id = user.id;
     req.session.username = user.first_name;
     req.session.loggedIn = true;
@@ -106,7 +122,7 @@ router.post('/logout', (req, res) => {
       res.status(204).end();
     });
   } else {
-    res.status(404).end(); // 404 or any other appropriate status code
+    res.status(404).end();
   }
 });
 

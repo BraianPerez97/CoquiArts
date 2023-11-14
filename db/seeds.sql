@@ -5,22 +5,11 @@ VALUES
 
 INSERT INTO categories (name, description)
 VALUES
-('Animations', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Media Managers', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Photography', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Graphic Design (Digital Content)','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Illustrations', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Murals', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Webpages', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Paintings & Graphic Arts', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Vitrals & Mosaics', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.'),
-
-('Sculptures', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis. Pulvinar sapien et ligula ullamcorper malesuada.');
+('Graphic Design & Illustration', 'Visual arts and design'),
+('Photography', 'Capturing moments through the lens'),
+('Music & Jingles', 'Musical compositions and jingles'),
+('Baked Goods', 'Delicious baked treats'),
+('Muralist & Street Art', 'Street art and mural creation'),
+('Social Media Content & Strategy', 'Content creation and social media strategy'),
+('Event Services', 'Services for events and gatherings'),
+('Other', 'Other creative services');

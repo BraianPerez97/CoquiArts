@@ -12,5 +12,5 @@ CREATE TABLE user ( """the many"""
     passwd VARCHAR(60) NOT NULL,
     json_path VARCHAR(255) DEFAULT '' NOT NULL,
     cat_id INTEGER,
-    FOREIGN KEY (cat_id) REFERENCES categories.name(id)
+    FOREIGN KEY (cat_id) REFERENCES categories(id)
     );

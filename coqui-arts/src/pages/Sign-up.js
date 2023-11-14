@@ -1,41 +1,68 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 //Image
 import Background from "../assets/login/Ghost.png";
 
 const Sign = () => {
-  const [newUser, setUser] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    emailError: false,
-    passwordError: false,
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  useEffect(() => {
-    axios
-      .post("/user", {
-        email: newUser.email,
-        passwd: newUser.password,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [newUser.email, newUser.password]);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...newUser,
-      [name]: value,
-      emailError: name === "email" && !value.includes("@"),
-      passwordError: name === "confirmPassword" && value !== newUser.password,
-    });
-  };
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
+  }
+
+  function handleConfirmPasswordChange(e) {
+    setConfirmPassword(e.target.value);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // Reset errors
+    setEmailError(false);
+    setPasswordError(false);
+    setConfirmPasswordError(false);
+
+    // Validate email
+    if (!email.includes("@")) {
+      setEmailError(true);
+    }
+
+    // Validate password length
+    if (password.length < 8) {
+      setPasswordError(true);
+    }
+
+    // Validate confirm password
+    if (password !== confirmPassword) {
+      setConfirmPasswordError(true);
+    }
+
+    // If valid, submit form
+    if (!emailError && !passwordError && !confirmPasswordError) {
+      // create user session after validation
+      sessionStorage.setItem(
+        "signup",
+        JSON.stringify({
+          email,
+          password,
+        })
+      );
+
+      navigate("/sign-up/welcome");
+    }
+  }
+
   return (
     <section className="sign-up-card container">
       <div className="side-card col-1">
@@ -51,7 +78,7 @@ const Sign = () => {
       ></img>
 
       <div className="form col-2">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1 className="card-title">
             Let's get you <span>discovered</span>
           </h1>
@@ -59,10 +86,13 @@ const Sign = () => {
           <input
             type="email"
             name="email"
-            className={`form-control ${newUser.emailError ? "error" : ""}`}
             placeholder="Email"
-            value={newUser.email}
-            onChange={handleInputChange}
+            onChange={handleEmailChange}
+            value={email}
+            className={
+              emailError ? "form-control error-border" : "form-control"
+            }
+            id="email-signup"
           />
 
           <div className="input-group mb-3">
@@ -71,28 +101,34 @@ const Sign = () => {
                 <i class="fa fa-lock"></i>
               </span>
             </div>
+
             <input
               type="password"
               name="password"
-              className={`form-control ${newUser.passwordError ? "error" : ""}`}
+              id="password-signup"
+              onChange={handlePasswordChange}
+              className={
+                passwordError ? "form-control error-border" : "form-control"
+              }
               placeholder="Password"
-              value={newUser.password}
-              onChange={handleInputChange}
+              value={password}
             />
             <input
               type="password"
-              name="confirmPassword"
-              className={`form-control ${newUser.passwordError ? "error" : ""}`}
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+              className={
+                confirmPasswordError
+                  ? "form-control error-border"
+                  : "form-control"
+              }
               placeholder="Confirm password"
-              value={newUser.confirmPassword}
-              onChange={handleInputChange}
             />
           </div>
-          <Link exact to="/sign-up/welcome">
-            <button type="button" className="btn btn-login">
-              I'M READY
-            </button>
-          </Link>
+
+          <button type="submit" className="btn btn-login">
+            I'M READY
+          </button>
         </form>
       </div>
       <div className="login-btn">

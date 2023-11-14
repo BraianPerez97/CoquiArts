@@ -17,6 +17,33 @@
 /*@import '../css/userCarousel.css';*/
 @import "./css/userProfile.css";
 
+#button-4 {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  border: solid var(--blue-purple) 3px;
+  padding: .5em 2em;
+  margin: .5em;
+  width: 100%;
+}
+
+#button-4 a {
+  position: relative;
+  transition: all .45s ease-Out;
+}
+
+#carousel {
+  margin-top: 2em;
+}
+
+.error-border {
+  border: solid 3px var(--error);
+}
+.margin {
+  padding-top: 10%;
+}
+
 main {
 	margin: 0 auto;
 	max-width: 90%;

@@ -91,10 +91,34 @@ User.init(
                 len: [8]
             },
         },
+        phone_number: {
+            type: DataTypes.STRING,
+            },
+        skills: {
+        type: DataTypes.ARRAY(DataTypes.STRING), // Assuming an array of skills, stored as JSON
+        },
+        description: {
+        type: DataTypes.TEXT,
+        },
+        social_media: {
+        type: DataTypes.JSON, // Assuming an object for social media links
+        validate: {
+            isValidJson: function (value) {
+            try {
+                JSON.parse(value);
+            } catch (error) {
+                throw new Error('Invalid JSON format for social_media');
+            }
+            },
+        },
+        },
+        images: {
+        type: DataTypes.ARRAY(DataTypes.STRING), // Assuming an array of image filenames
+        },
         // Define json_path column for storing the relative path of the JSON file
-            json_path: {
-                type: DataTypes.STRING,
-                allowNull: true,
+        json_path: {
+        type: DataTypes.STRING,
+        allowNull: true,
         },
     },
     {
