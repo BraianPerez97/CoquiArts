@@ -34,7 +34,7 @@ const categories = [
   },
   {
     photo: Bake,
-    name: "Bakegoods",
+    name: "Baked Goods",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
   },
