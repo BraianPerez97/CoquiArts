@@ -1,41 +1,72 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 //Image
 import Background from "../assets/login/Ghost.png";
 
-const Sign = () => {
-  const [newUser, setUser] = useState({
+export default function Sign() {
+  // Declarations
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
-    emailError: false,
-    passwordError: false,
   });
 
-  useEffect(() => {
-    axios
-      .post("/user", {
-        email: newUser.email,
-        passwd: newUser.password,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [newUser.email, newUser.password]);
+  const [errors, setErrors] = useState({
+    email: false,
+    password: false,
+    confirmPassword: false,
+  });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...newUser,
-      [name]: value,
-      emailError: name === "email" && !value.includes("@"),
-      passwordError: name === "confirmPassword" && value !== newUser.password,
+  //Methods
+  function handleInputChange(e) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-  };
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    // Reset errors
+    setErrors({
+      email: false,
+      password: false,
+      confirmPassword: false,
+    });
+   
+    // Validate email
+    if (!formData.email.includes("@")) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: true }));
+    }
+
+    // Validate password length
+    if (formData.password.length < 8) {
+      setErrors((prevErrors) => ({ ...prevErrors, password: true }));
+    }
+
+    // Validate confirmation
+    if (formData.password !== formData.confirmPassword) {
+      setErrors((prevErrors) => ({ ...prevErrors, confirmPassword: true }));
+    }
+
+    // If valid, submit form
+    if (!errors.email && !errors.password && !errors.confirmPassword && formData.email && formData.password) {
+
+      // create user session after validation
+      sessionStorage.setItem(
+        "signup",
+        JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        })
+      );
+
+      navigate("/sign-up/welcome");
+
+  }
+  }
   return (
     <section className="sign-up-card container">
       <div className="side-card col-1">
@@ -51,54 +82,68 @@ const Sign = () => {
       ></img>
 
       <div className="form col-2">
+        {/* FORM SECTION */}
         <form>
           <h1 className="card-title">
             Let's get you <span>discovered</span>
           </h1>
 
+          {/* INPUT */}
+
           <input
             type="email"
             name="email"
-            className={`form-control ${newUser.emailError ? "error" : ""}`}
             placeholder="Email"
-            value={newUser.email}
             onChange={handleInputChange}
+            value={formData.email}
+            className={`form-control ${errors.email ? "invalid-input" : ""}`}
+            id="email-signup"
           />
 
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text">
-                <i class="fa fa-lock"></i>
+                <i className="fa fa-lock"></i>
               </span>
             </div>
+
+            {/* INPUT */}
+
             <input
               type="password"
               name="password"
-              className={`form-control ${newUser.passwordError ? "error" : ""}`}
-              placeholder="Password"
-              value={newUser.password}
+              id="password-signup"
               onChange={handleInputChange}
+              className={`form-control ${
+                errors.password ? "invalid-input" : ""
+              }`}
+              placeholder="Password"
+              value={formData.password}
             />
+
+            {/* INPUT */}
+
             <input
               type="password"
               name="confirmPassword"
-              className={`form-control ${newUser.passwordError ? "error" : ""}`}
-              placeholder="Confirm password"
-              value={newUser.confirmPassword}
+              value={formData.confirmPassword}
               onChange={handleInputChange}
+              className={`form-control ${
+                errors.confirmPassword ? "invalid-input" : ""
+              }`}
+              placeholder="Confirm password"
             />
           </div>
-          <Link exact to="/sign-up/welcome">
-            <button type="button" className="btn btn-login">
-              I'M READY
-            </button>
-          </Link>
+
+          <button type="submit" className="btn btn-login" onClick={handleSubmit}>
+            I'M READY
+          </button>
         </form>
       </div>
       <div className="login-btn">
         <p>Have an account already?</p>
         <Link exact to="/login">
-          <button type="button" className="btn btn-small2">
+          <button type="submit" className="btn btn-small2">
             Login
           </button>
         </Link>
@@ -106,5 +151,3 @@ const Sign = () => {
     </section>
   );
 };
-
-export default Sign;

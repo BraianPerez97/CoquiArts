@@ -1,12 +1,29 @@
 // Import required modules and packages
 const express = require('express');
+const router = express.Router();
 const routes = require('./routes');
 const sequelize = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const cors = require('cors')
+
+router.get('/', cors, (req, res) => {
+
+  // Add CORS headers here
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+  // Get users logic...
+
+  res.json(users);
+});
+module.exports = router;
+// index.js
+
 
 // Create an Express application
 const app = express();
+
 
 // Set the port to the environment variable PORT or 5001 if not defined
 const PORT = process.env.PORT || 5001;
@@ -21,14 +38,19 @@ const models = {
 
 const bodyParser = require('body-parser');
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/user', routes);
 
 // Configure session settings
 const sess = {
   secret: 'thisismysecret',
-  cookie: {},
+  cookie: {
+    httpOnly: true,
+    secure: true,
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
