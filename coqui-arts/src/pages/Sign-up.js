@@ -1,68 +1,72 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 //Image
 import Background from "../assets/login/Ghost.png";
 
-const Sign = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+export default function Sign() {
+  // Declarations
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
+  const [errors, setErrors] = useState({
+    email: false,
+    password: false,
+    confirmPassword: false,
+  });
 
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleConfirmPasswordChange(e) {
-    setConfirmPassword(e.target.value);
+  //Methods
+  function handleInputChange(e) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     // Reset errors
-    setEmailError(false);
-    setPasswordError(false);
-    setConfirmPasswordError(false);
-
+    setErrors({
+      email: false,
+      password: false,
+      confirmPassword: false,
+    });
+   
     // Validate email
-    if (!email.includes("@")) {
-      setEmailError(true);
+    if (!formData.email.includes("@")) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: true }));
     }
 
     // Validate password length
-    if (password.length < 8) {
-      setPasswordError(true);
+    if (formData.password.length < 8) {
+      setErrors((prevErrors) => ({ ...prevErrors, password: true }));
     }
 
-    // Validate confirm password
-    if (password !== confirmPassword) {
-      setConfirmPasswordError(true);
+    // Validate confirmation
+    if (formData.password !== formData.confirmPassword) {
+      setErrors((prevErrors) => ({ ...prevErrors, confirmPassword: true }));
     }
 
     // If valid, submit form
-    if (!emailError && !passwordError && !confirmPasswordError) {
+    if (!errors.email && !errors.password && !errors.confirmPassword && formData.email && formData.password) {
+
       // create user session after validation
       sessionStorage.setItem(
         "signup",
         JSON.stringify({
-          email,
-          password,
+          email: formData.email,
+          password: formData.password,
         })
       );
 
       navigate("/sign-up/welcome");
-    }
-  }
 
+  }
+  }
   return (
     <section className="sign-up-card container">
       <div className="side-card col-1">
@@ -78,55 +82,60 @@ const Sign = () => {
       ></img>
 
       <div className="form col-2">
-        <form onSubmit={handleSubmit}>
+        {/* FORM SECTION */}
+        <form>
           <h1 className="card-title">
             Let's get you <span>discovered</span>
           </h1>
+
+          {/* INPUT */}
 
           <input
             type="email"
             name="email"
             placeholder="Email"
-            onChange={handleEmailChange}
-            value={email}
-            className={
-              emailError ? "form-control error-border" : "form-control"
-            }
+            onChange={handleInputChange}
+            value={formData.email}
+            className={`form-control ${errors.email ? "invalid-input" : ""}`}
             id="email-signup"
           />
 
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text">
-                <i class="fa fa-lock"></i>
+                <i className="fa fa-lock"></i>
               </span>
             </div>
+
+            {/* INPUT */}
 
             <input
               type="password"
               name="password"
               id="password-signup"
-              onChange={handlePasswordChange}
-              className={
-                passwordError ? "form-control error-border" : "form-control"
-              }
+              onChange={handleInputChange}
+              className={`form-control ${
+                errors.password ? "invalid-input" : ""
+              }`}
               placeholder="Password"
-              value={password}
+              value={formData.password}
             />
+
+            {/* INPUT */}
+
             <input
               type="password"
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-              className={
-                confirmPasswordError
-                  ? "form-control error-border"
-                  : "form-control"
-              }
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+              className={`form-control ${
+                errors.confirmPassword ? "invalid-input" : ""
+              }`}
               placeholder="Confirm password"
             />
           </div>
 
-          <button type="submit" className="btn btn-login">
+          <button type="submit" className="btn btn-login" onClick={handleSubmit}>
             I'M READY
           </button>
         </form>
@@ -134,7 +143,7 @@ const Sign = () => {
       <div className="login-btn">
         <p>Have an account already?</p>
         <Link exact to="/login">
-          <button type="button" className="btn btn-small2">
+          <button type="submit" className="btn btn-small2">
             Login
           </button>
         </Link>
@@ -142,5 +151,3 @@ const Sign = () => {
     </section>
   );
 };
-
-export default Sign;

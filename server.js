@@ -47,7 +47,10 @@ app.use('/user', routes);
 // Configure session settings
 const sess = {
   secret: 'thisismysecret',
-  cookie: {},
+  cookie: {
+    httpOnly: true,
+    secure: true,
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

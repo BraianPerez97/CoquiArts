@@ -37,12 +37,34 @@
   margin-top: 2em;
 }
 
-.error-border {
+input.invalid-input {
   border: solid 3px var(--error);
 }
 .margin {
   padding-top: 10%;
 }
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Optional: Enable smooth scrolling on iOS devices */
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 345px; /* Set the width of each item */
+  margin-right: 16px; /* Adjust spacing between items */
+  scroll-snap-align: start;
+}
+
+/* Optional: Add media queries for responsiveness */
+@media (max-width: 767px) {
+  .carousel-item {
+    width: 100%; /* Full width for smaller screens */
+    margin-right: 0;
+  }
+}
+
 
 main {
 	margin: 0 auto;
