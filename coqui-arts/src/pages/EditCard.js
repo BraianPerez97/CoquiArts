@@ -6,7 +6,7 @@ import axios from 'axios';
 function NameForm() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    profileImage: "",
+    profileImage:  document.querySelector('#fileInput').files,
     firstName: "",
     lastName: "",
     category: "",
@@ -14,7 +14,7 @@ function NameForm() {
     phone: "",
     skills: [],
     description: "",
-    topWorks: [null, null, null], // Store URLs of top works images
+    topWorks: [ document.querySelector('#fileInput').files], // Store URLs of top works images
     socialMedia: [],
   });
 

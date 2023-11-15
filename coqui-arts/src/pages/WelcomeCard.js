@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ListCategory from "./ListCategory";
+import ListCategory from "../components/ListCategory";
 
 //Images
 import LogoType from "../assets/logos/LogoType.png";
@@ -14,11 +14,11 @@ const Welcome = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [formData, setFormData] = useState({
-    email: '',
-    passwd: '',
     first_name: '',
     last_name: '',
-    category: '', // Assuming category is a string, modify accordingly if it's an ID
+    email: '',
+    passwd: '',
+    cat_id: category, // Assuming category is a string, modify accordingly if it's an ID
   });
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const Welcome = () => {
     try {
       // Send data to the server
       const response = await axios.post('/api/user/', formData);
-
+      console.log(`User creation successful. Welcome ${formData.first_name}`);
       // If successful, navigate to the welcome page
       navigate("/sign-up/welcome/tips");
     } catch (error) {

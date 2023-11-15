@@ -1,7 +1,7 @@
 //This component is the section 'How Does It Works' (HDIW) of the app in home
-
+import axios from 'axios';
 //Dependencies
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItem from "@mui/material/ListItemText";
@@ -10,41 +10,49 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 //import ListSubheader from "@mui/material/ListSubheader";
 //import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-export default function ListCategory({ currentCategory, users }) {
+export default function ListCategory({ currentCategory }) {
   
   // Categories list options
   const [categories, setCategories] = useState([
     {
-      name: "Photography",
-      open: currentCategory === "Photography",
-    },
-    {
       name: "Graphic Design & Illustrations",
       open: currentCategory === "Graphic Design & Illustrations",
+      id: "1"
+    },
+    {
+      name: "Photography",
+      open: currentCategory === "Photography",
+      id: "2"
     },
     {
       name: "Music & Jingles",
       open: currentCategory === "Music & Jingles",
+      id: "3"
     },
     {
-      name: "Bakedgoods",
+      name: "Baked goods",
       open: currentCategory === "Bakedgoods",
+      id: "4"
     },
     {
       name: "Mural & Graffiti",
       open: currentCategory === "Mural & Graffiti",
+      id: "5"
     },
     {
       name: "Strategy & Management for Social Media",
       open: currentCategory === "Strategy & Management for Social Media",
+      id:"6"
     },
     {
       name: "Events Services",
       open: currentCategory === "Event Services",
+      id:"7"
     },
     {
       name: "Other",
       open: currentCategory === "Other",
+      id:"8"
     },
   ]);
   const [open, setOpen] = useState(false);
@@ -56,6 +64,8 @@ export default function ListCategory({ currentCategory, users }) {
     setOpen(!open);
   };
 
+   const [userCat, setUsers] = useState([]);
+
   const handleToggle = (index) => {
     setSelected(index)
     setCategories((prevCategories) => {
@@ -66,6 +76,18 @@ export default function ListCategory({ currentCategory, users }) {
       return newCategories;
     });
   };
+  useEffect(() => {
+    axios.get(`http://localhost:5001/api/user`)
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+// Filter users by category
+const users = userCat.filter(user => user.cat_id === categories.id);
 
   return (
     <List
@@ -110,7 +132,7 @@ export default function ListCategory({ currentCategory, users }) {
         selected={index === selected}
         primary={category.name}
       >
-      </ListItem>  
+      </ListItem>  {users}
             </ListItemButton>
           ))}
         </List>

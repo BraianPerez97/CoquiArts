@@ -14,10 +14,10 @@ import Login from "./pages/Login";
 import UserGallery from "./components/UserGallery";
 
 import Sign from './pages/Sign-up';
-import WelcomeCard from "./components/WelcomeCard";
-import InfoCards from "./components/InfoCards";
+import WelcomeCard from "./pages/WelcomeCard";
+import InfoCards from "./pages/InfoCards";
 import NameForm from "./pages/EditCard";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./pages/UserProfile";
 
 import Terms from "./pages/Policies/Terms";
 import Usage from "./pages/Policies/Usage";

@@ -5,7 +5,6 @@ async function requireAuth(req, res, next) {
       if (!req.session.user_id) {
         throw new Error('Unauthorized');
       }
-    
       next();
       
     } catch (err) {

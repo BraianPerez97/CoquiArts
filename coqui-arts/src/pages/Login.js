@@ -7,7 +7,17 @@ import Background from "../assets/login/Spy.png";
 const Login = () => {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState('');
+    const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({
+    email: false,
+    password: false,
+  
+  });
+
   const [userInput, setUserInput] = useState({
     email: '',
     password: ''
@@ -23,25 +33,42 @@ const Login = () => {
 
 
 const handleLogin = async (email, password) => {
+    // Reset errors
+    setErrors({
+      email: false,
+      password: false,
+    });
+   
+    // Validate email
+    if (!formData.email.includes("@")) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: true }));
+    }
+
+    // Validate password length
+    if (formData.password.length < 8) {
+      setErrors((prevErrors) => ({ ...prevErrors, password: true }));
+    }
+
   
-  try {
-     const response = await AuthService.login(email, password);
-     
-     const { user, sessionToken } = response.data;
+    // If valid, submit form
+    if (!errors.email && !errors.password && formData.email && formData.password) {
+      navigate("/");
+      console.log('login on its way')
+
+    }
+      try {
+        const response = await AuthService.login(email, password);
+        
+      console.log('login on its way')
+        // Redirect
+        navigate('/');
+      }
+      catch (error) {
+        // Handle login error
+        console.error(error);
+      };
+    }
   
-  localStorage.setItem('session', sessionToken);
-  console.log('success' + user)
-
-  // Redirect
-  navigate('/');
-  } catch (error) {
-    // Handle login error
-    console.error(error);
-  }
-};
-
-
-
 
 
   return (
@@ -67,9 +94,10 @@ const handleLogin = async (email, password) => {
 
           {/* Form Section */}
           <input type="email" name="email" value={userInput.email}
-          id="email-login"
-          className="form-control" placeholder="Email" 
           onChange={handleInputChange}
+          id="email-login"
+          className={`form-control ${errors.email ? "invalid-input" : ""}`}
+          placeholder="Email" 
           />
 
           <div className="input-group mb-3">
@@ -82,10 +110,10 @@ const handleLogin = async (email, password) => {
               type="password"
               name="password"
               id="password-login"
-              className="form-control"
+              onChange={handleInputChange}
+              className={`form-control ${errors.password ? "invalid-input" : ""}`}
               placeholder="Password"
               value={userInput.password}
-              onChange={handleInputChange}
             />
           </div>
 
