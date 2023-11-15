@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 //Components
-import ListCategory from "./ListCategory";
+import ListCategory from "../components/ListCategory";
 //Materialize
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -38,10 +38,10 @@ export default function UserProfile({ Users }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  useEffect(() => {
+  useEffect((index) => {
     //Bring user selected
     axios
-      .get(`http://localhost:5001/api/user/by-category/${Users.cat_id}`)
+      .get(`http://localhost:5001/api/user`)
       .then((response) => {
         setUsers(response.data);
       })
