@@ -11,44 +11,57 @@ import LogoType from "../assets/logos/LogoType.png";
 
 const Welcome = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState('');
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
   const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    passwd: '',
+    first_name: "",
+    last_name: "",
+    email: "",
+    passwd: "",
     cat_id: category, // Assuming category is a string, modify accordingly if it's an ID
   });
 
   useEffect(() => {
     // Get signup data from sessionStorage
-    const signupData = JSON.parse(sessionStorage.getItem('signup'));  
-    const {email, password} = signupData;
+    const signupData = JSON.parse(sessionStorage.getItem("user"));
+    const { email, password } = signupData;
 
-    // Save email and password to state or local variables 
+    // Save email and password to state
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      email: email,
+      passwd: password,
+    }));
   }, []);
 
-   const handleInputChange = (e) => {
+  const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      first_name: e.target.value,
     });
   };
+  const handleCategoryChange = (category) => {
+    setCategory(category);
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      cat_id: category
+    }));
+  };
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Additional validation if needed
 
     try {
       // Send data to the server
-      const response = await axios.post('/api/user/', formData);
+      const response = await axios.post("http://localhost:5001/api/user", formData);
       console.log(`User creation successful. Welcome ${formData.first_name}`);
+      
       // If successful, navigate to the welcome page
       navigate("/sign-up/welcome/tips");
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
       // Handle error, show user a message, etc.
     }
   };
@@ -68,11 +81,11 @@ const Welcome = () => {
             className="form-control"
             placeholder="Name or nickname"
             name="name"
-            value={formData.name}
+            value={formData.first_name}
             onChange={handleInputChange}
           />
 
-          <ListCategory></ListCategory>
+          <ListCategory onChange={handleCategoryChange}></ListCategory>
 
           <Link exact to="/sign-up/welcome/tips">
             <button type="submit" className="btn continue">

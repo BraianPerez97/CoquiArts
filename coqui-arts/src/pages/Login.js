@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthService from '../utils/auth';
+import {requireAuth, isLoggedIn} from '../utils/auth';
+import axios from "axios";
 //Image
 import Background from "../assets/login/Spy.png";
 
@@ -31,43 +32,57 @@ const Login = () => {
     });
   };
 
+ useEffect(() => {
+    setLoggedIn(isLoggedIn()); // use isLoggedIn to set loggedIn state
+  }, []);
 
-const handleLogin = async (email, password) => {
-    // Reset errors
-    setErrors({
-      email: false,
-      password: false,
-    });
-   
-    // Validate email
-    if (!formData.email.includes("@")) {
-      setErrors((prevErrors) => ({ ...prevErrors, email: true }));
-    }
+  const emailExists = async (email) => {
+  try {
+    const response = await axios.get('http://localhost:5001/api/user', { params: { email } });
+       console.log('Response from server:', response); // Add this lin
+    return response.status === 200 && response.data.exists;
+  } catch (error) {
+    console.error('Failed to check email:', error);
+    return false;
+  }
+};
 
-    // Validate password length
-    if (formData.password.length < 8) {
-      setErrors((prevErrors) => ({ ...prevErrors, password: true }));
-    }
+const handleLogin = async (e) => {
+  e.preventDefault();
+  // Reset errors
+  setErrors({
+    email: false,
+    password: false,
+  });
 
-  
-    // If valid, submit form
-    if (!errors.email && !errors.password && formData.email && formData.password) {
-      navigate("/");
-      console.log('login on its way')
+  // Validate email
+  if (!userInput.email.includes("@")) {
+    setErrors((prevErrors) => ({ ...prevErrors, email: true }));
+  }
 
+  // Validate password length
+  if (userInput.password.length < 8) {
+    setErrors((prevErrors) => ({ ...prevErrors, password: true }));
+  }
+
+  // If valid, submit form
+  if (!errors.email && !errors.password && userInput.email && userInput.password) {
+    console.log('login on its way')
+    if (await emailExists(userInput.email, userInput.password)) {
+    try {
+      await requireAuth(e);
+      console.log('login successful')
+      // Redirect
+      navigate('/');
     }
-      try {
-        const response = await AuthService.login(email, password);
-        
-      console.log('login on its way')
-        // Redirect
-        navigate('/');
-      }
-      catch (error) {
-        // Handle login error
-        console.error(error);
-      };
+    catch (error) {
+      // Handle login error
+      console.error(error);
+    };} else {
+      console.log('email does not exist')
     }
+  }
+};
   
 
 

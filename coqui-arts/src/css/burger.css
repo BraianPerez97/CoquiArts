@@ -10,7 +10,6 @@ img.logo {
   overflow: visible;
   position: -web-sticky;
   position: fixed;
-  top: 3em;
   right: 2em;
   z-index: 2;
 }

@@ -85,6 +85,7 @@ export default function ListCategory({ currentCategory }) {
         console.error(error);
       });
   }, []);
+  
 
 // Filter users by category
 const users = userCat.filter(user => user.cat_id === categories.id);

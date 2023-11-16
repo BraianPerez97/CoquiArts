@@ -4,7 +4,7 @@
 //Dependencies
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthService from "../utils/auth";
+import {logout, isLoggedIn} from "../utils/auth";
 
 //Images
 import Logo from "../logo_blk.png";
@@ -17,15 +17,16 @@ const navigate = useNavigate();
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      const isLoggedIn = await AuthService.isLoggedIn();
-      setLoggedIn(isLoggedIn);
+      const loggedInStatus = await isLoggedIn();
+      console.log('Logged in status:', loggedInStatus); // Add this line
+      setLoggedIn(loggedInStatus);
     };
-
+  
     checkLoggedIn();
   }, []);
 
   const handleLogout = async () => {
-    await AuthService.logout();
+    await logout();
     setLoggedIn(false);
     navigate('/')
   };
