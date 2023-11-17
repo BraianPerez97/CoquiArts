@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 //Image
 import Background from "../assets/login/Ghost.png";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 export default function Sign() {
   // Declarations
@@ -36,27 +38,37 @@ export default function Sign() {
       confirmPassword: false,
     });
 
+    let isValid = true;
+
     // Validate email
     if (!formData.email.includes("@")) {
       setErrors((prevErrors) => ({ ...prevErrors, email: true }));
+      isValid = false;
     }
 
     // Validate password length
     if (formData.password.length < 8) {
       setErrors((prevErrors) => ({ ...prevErrors, password: true }));
+      isValid = false;
     }
 
     // Validate confirmation
     if (formData.password !== formData.confirmPassword) {
       setErrors((prevErrors) => ({ ...prevErrors, confirmPassword: true }));
+      isValid = false;
     }
 
     // If valid, submit form
-    if (!errors.email && !errors.password && !errors.confirmPassword && formData.email && formData.password) {
-
+    if (isValid &&
+      !errors.email &&
+      !errors.password &&
+      !errors.confirmPassword &&
+      formData.email &&
+      formData.password
+    ) {
       // create user session after validation
       sessionStorage.setItem(
-        "signup",
+        "user",
         JSON.stringify({
           email: formData.email,
           password: formData.password,
@@ -64,8 +76,7 @@ export default function Sign() {
       );
 
       navigate("/sign-up/welcome");
-
-  }
+    }
   }
   return (
     <section className="sign-up-card container">
@@ -135,7 +146,11 @@ export default function Sign() {
             />
           </div>
 
-          <button type="submit" className="btn btn-login" onClick={handleSubmit}>
+          <button
+            type="submit"
+            className="btn btn-login"
+            onClick={handleSubmit}
+          >
             I'M READY
           </button>
         </form>
@@ -150,4 +165,4 @@ export default function Sign() {
       </div>
     </section>
   );
-};
+}

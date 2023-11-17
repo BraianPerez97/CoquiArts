@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+
 function NameForm() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -14,7 +15,7 @@ function NameForm() {
     phone: "",
     skills: [],
     description: "",
-    topWorks: [null, null, null], // Store URLs of top works images
+    topWorks: [ ], // Store URLs of top works images
     socialMedia: [],
   });
 
@@ -32,13 +33,33 @@ function NameForm() {
     }
   }, []); // Empty dependency array ensures useEffect runs only once on mount
 
-
+const submitData = async () => {
+  const data = {
+    first_name: user.firstName,
+    last_name: user.lastName,
+    email: user.email,
+    passwd: user.passwd,
+    cat_id: user.cat_id,
+    extra_info: user,
+  };
+  try {
+    const response = await axios.put(`/api/user/${user.id}`, data); 
+    if (response.status === 200) {
+      navigate("/");
+    } else {
+      console.error('Failed to submit data:', response);
+    }
+  } catch (error) {
+    console.error('Failed to submit data:', error);
+  }
+};
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
+const { name, value } = e.target;
+  setUser(prevUser => {
+    const updatedUser = { ...prevUser, [name]: value };
+    sessionStorage.setItem("userData", JSON.stringify(updatedUser));
+    return updatedUser;
+  });
   };
 
   const handleKeywordsChange = (e) => {
@@ -51,10 +72,22 @@ function NameForm() {
 
   
   const handleTopWorkImageUpload = (e, index) => {
-    // Handle image upload and store the URL in the topWorks array
-    // You may want to use a file upload component or library for this
-    // Update the topWorks state with the uploaded image URL at the specified index
+    const file = e.target.files[0];
+  // Upload the file and get the URL
+  // This depends on how you handle file uploads
+  const url = URL.createObjectURL(file);
+  setUser(prevUser => {
+    const updatedUser = { ...prevUser };
+    if (index === 0) {
+      updatedUser.profileImage = url;
+    } else {
+      updatedUser.topWorks[index - 1] = url;
+    }
+    sessionStorage.setItem("userData", JSON.stringify(updatedUser));
+    return updatedUser;
+  });
   };
+
   const inputs = [
     {
       type: "text",
@@ -139,10 +172,7 @@ function NameForm() {
         onChange={handleInputChange}
         />
 
-      <button type="button" className="btn btn-login"  onClick={() => {
-          sessionStorage.setItem("userData", JSON.stringify(user));
-          navigate("/");
-        }}>
+      <button type="button" className="btn btn-login"  onClick={submitData}>
         DONE!
       </button>
     </section>

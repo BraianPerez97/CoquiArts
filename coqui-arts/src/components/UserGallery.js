@@ -60,6 +60,7 @@ function UserGallery() {
                     <div className="profile-description">Lorem</div>
                     <div className="profile-button">
                       <a href={"mailto:" + user.email}>{user.email}</a>
+                      <p>{user.phone_number}</p>
                     </div>
                   </li>
                 </Link>

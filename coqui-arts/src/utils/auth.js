@@ -1,19 +1,18 @@
 import axios from 'axios';
 
-async function requireAuth(req, res, next) {
-    try {      
-      if (!req.session.user_id) {
-        throw new Error('Unauthorized');
-      }
-    
-      next();
-      
-    } catch (err) {
-      next(err);
+export async function requireAuth(email, password) {
+  try {      
+    await axios.post('http://localhost:5001/api/user/login', { email, password });
+    const sessionToken = localStorage.getItem('sessionToken');
+    if (!sessionToken) {
+      throw new Error('Unauthorized');
     }
+  } catch (err) {
+    console.error(err);
   }
+}
   
-  function isLoggedIn() {
+  export function isLoggedIn() {
   try {
     const sessionToken = localStorage.getItem('sessionToken');
     return !!sessionToken; // Returns true if sessionToken exists, false otherwise
@@ -24,7 +23,7 @@ async function requireAuth(req, res, next) {
 }
 
 
-  function logout() {
+  export function logout() {
   axios.post('/api/user/logout')
     .then(() => {
       // Remove session data  
@@ -37,5 +36,3 @@ async function requireAuth(req, res, next) {
       console.error('Logout error:', error);
     });
 }
-
-export default { requireAuth, logout, isLoggedIn };

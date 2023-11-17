@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 //Components
-import ListCategory from "./ListCategory";
+import ListCategory from "../components/ListCategory";
 //Materialize
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -26,17 +26,31 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 //to be deleted
 import tester from "../assets/tester.jpg";
 
-export default function UserProfile({ users }) {
-  const [expanded, setExpanded] = useState(false);
+export default function UserProfile({ Users }) {
+  //login status status
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  //conditional menu options status
+  const [editing, setEditing] = useState(false);
+  const [users, setUsers] = useState([]);
 
+  //card expansion status
+  const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const [editing, setEditing] = useState(false);
+  useEffect((index) => {
+    //Bring user selected
+    axios
+      .get(`http://localhost:5001/api/user`)
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
-    /* Imported  Carousel. Needs to map users and display their info, be Refractored
-      Benefits: We don't need a user carousel AND a user profile page, this covers both by expanding*/
     <div>
       <div className="margin"></div>
       <ListCategory></ListCategory>
@@ -46,7 +60,7 @@ export default function UserProfile({ users }) {
             className="carousel-item"
             id="carousel"
             user={user}
-            key={user.id}
+            key={user.cat_id}
           >
             <CardHeader>
               avatar=

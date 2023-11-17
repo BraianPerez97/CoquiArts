@@ -18,49 +18,49 @@ const categories = [
     photo: Photos,
     name: "Photography",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Explore the art of capturing moments with our stunning photography collection. Immerse yourself in visual storytelling and discover the beauty of every frame.",
   },
   {
     photo: Graphics,
     name: "Graphic Design & Illustration",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Unleash your creativity with our Graphic Design & Illustration category. Dive into a world of vibrant visuals and artistic expression, where every design tells a unique story.",
   },
   {
     photo: Music,
     name: "Music & Jingles",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Indulge your auditory senses in our Music & Jingles section. From soulful melodies to catchy jingles, experience a symphony of sounds that elevate every moment.",
   },
   {
     photo: Bake,
-    name: "Bakedgoods",
+    name: "Baked goods",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Satisfy your sweet cravings and explore the world of delectable Baked Goods. From mouthwatering pastries to heavenly cakes, treat yourself to a delightful culinary experience.",
   },
   {
     photo: Murals,
     name: "Muralists & Street Art",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Immerse yourself in the vibrant world of Muralists & Street Art. Witness the transformation of spaces through colorful expressions and bold creativity.",
   },
   {
     photo: Social,
     name: "Social Media Content & Strategy",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Enhance your online presence with our Social Media Content & Strategy offerings. Navigate the digital landscape with engaging content and effective strategies.",
   },
   {
     photo: Events,
     name: "Event Services",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Elevate your events with our comprehensive Event Services. From planning to execution, we turn your ideas into memorable experiences.",
   },
   {
     photo: Other,
     name: "Other",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Nislsuscipit adipiscing bibendum est.",
+      "Discover the unexpected in our eclectic Other category. From unique creations to unconventional services, find hidden gems that defy categorization.",
   },
 ];
 

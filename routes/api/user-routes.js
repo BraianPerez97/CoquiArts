@@ -109,10 +109,14 @@ router.post('/login', async (req, res) => {
     req.session.username = user.first_name;
     req.session.loggedIn = true;
 
-    res.json({  user: req.session.user, 
-    sessionToken: req.session.id, message: "Welcome back!" });
+    res.json({
+      user: req.session.user,
+      sessionToken: req.session.id,
+      message: "Welcome back!"
+    });
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    console.error("Login error:", err); // Add this line for logging
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

@@ -93,6 +93,7 @@ User.init(
         },
         phone_number: {
             type: DataTypes.STRING,
+            allowNull: true,
             },
         skills: {
         type: DataTypes.ARRAY(DataTypes.STRING), // Assuming an array of skills, stored as JSON
